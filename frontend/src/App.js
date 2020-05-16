@@ -6,16 +6,17 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import Home from "./components/home";
+import Product from "./components/product";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path='/' component={Login} />
+          <Route exact path='/' component={Home} />
           <Route path="/sign-in" component={Login} />
           <Route path="/sign-up" component={SignUp} />
-          <Route path="/home" component={Home}/>
+          <Route path="/product" component={Product}/>
         </Switch>
       </div>
     </Router>
