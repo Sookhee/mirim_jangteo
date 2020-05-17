@@ -10,6 +10,7 @@ import Home from "./components/home";
 import Product from "./components/product";
 import Post from "./components/post";
 import Mypage from "./components/mypage";
+import Footer from "./components/footer";
 
 class App extends Component {
   state = {
@@ -30,6 +31,7 @@ class App extends Component {
                 <Route path="/post" component={Post}/>
                 <Route path="/mypage" component={Mypage}/>
               </div>
+              <Footer/>
             </div>
           )
           :
