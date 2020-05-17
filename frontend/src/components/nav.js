@@ -5,16 +5,14 @@ import "../style/nav.css";
 class Nav extends Component {
     render() {
         return (
-            <div>
+            <div className="nav">
                 <div className="navbar navbar-expand-lg">
                     <div className="nav-item">
                         <NavLink to={"/mypage"}>찜한 상품</NavLink>
                     </div>
-                    <div>
-                        <NavLink to={"/alert"}>알림</NavLink>
-                    </div>
-                    <div>
-                        <NavLink to={"/logout"}>로그아웃</NavLink>
+                    <div className="nav-item">
+                        <NavLink to={"/alert"} className="in-item">알림</NavLink>
+                        <NavLink to={"/logout"} className="in-item">로그아웃</NavLink>
                     </div>
                 </div>
                 <div className="navbar navbar-expand-lg">
@@ -27,21 +25,13 @@ class Nav extends Component {
                             <button type="submit">검색</button>
                         </form>
                     </div>
-                    <div>
-                        <NavLink to={"/post"}>판매하기</NavLink>
-                    </div>
-                    <div>
-                        <NavLink to={"/mypage"}>마이페이지</NavLink>
-                    </div>
-                    <div>
-                        미림톡
-                    </div>
-                    <div>
-                        <NavLink to="/list">상품</NavLink>
+                    <div className="nav-item">
+                        <NavLink to={"/post"} className="in-item">판매하기</NavLink>
+                        <NavLink to={"/mypage"} className="in-item">마이페이지</NavLink>
+                        <NavLink to={"/mirim-talk"} className="in-item">미림톡</NavLink>
+                        <NavLink to="/list" className="in-item">상품</NavLink>
                     </div>
                 </div>
-                
-
             </div>
         );
     }

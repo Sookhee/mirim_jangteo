@@ -1,0 +1,14 @@
+.nav{
+    display: block;
+    padding: 0 150px;
+}
+.nav .navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.nav .navbar .nav-item{}
+.nav .navbar .nav-item .in-item{
+    margin-left: 30px;
+}
+.nav .navbar .nav-item input{}
+.nav .navbar .nav-item button{}
