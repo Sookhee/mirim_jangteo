@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import "../style/sign.css";
 
-export default class Login extends Component {
+class Login extends Component {
     render() {
         return (
             <div className="auth-wrapper">
@@ -37,3 +37,5 @@ export default class Login extends Component {
         );
     }
 }
+
+export default Login;

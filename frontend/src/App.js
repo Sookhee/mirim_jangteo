@@ -1,26 +1,61 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Nav from "./components/nav";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import Home from "./components/home";
 import Product from "./components/product";
+import Post from "./components/post";
+import Mypage from "./components/mypage";
 
-function App() {
-  return (
-    <Router>
+class App extends Component {
+  state = {
+    isLogin: true,
+  };
+
+  render() {
+    return (
       <div className="App">
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path="/sign-in" component={Login} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/product" component={Product}/>
-        </Switch>
+        {
+          this.state.isLogin ? 
+          (
+            <div>
+              <Nav/>
+              <div>
+                <Route path="/" exact={"true"} component={Home}/>
+                <Route path="/list" component={Product}/>
+                <Route path="/post" component={Post}/>
+                <Route path="/mypage" component={Mypage}/>
+              </div>
+            </div>
+          )
+          :
+          (
+            <Switch>
+              <Route path="/" exact={"true"} component={Login}/>
+              <Route path="/sign-in" component={Login}/>
+              <Route path="/sign-up" component={SignUp}/>
+            </Switch>
+          )
+        }
       </div>
-    </Router>
-  );
+    );
+  }
 }
+// function App() {
+//   return (
+//     <Router>
+//       <div className="App">
+
+//         <Switch>
+//           
+//         </Switch>
+//       </div>
+//     </Router>
+//   );
+// }
 
 export default App;

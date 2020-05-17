@@ -8,18 +8,18 @@ class Nav extends Component {
             <div>
                 <div className="navbar navbar-expand-lg">
                     <div className="nav-item">
-                        찜한 상품
+                        <NavLink to={"/mypage"}>찜한 상품</NavLink>
                     </div>
                     <div>
-                        알림
+                        <NavLink to={"/alert"}>알림</NavLink>
                     </div>
                     <div>
-                        로그아웃
+                        <NavLink to={"/logout"}>로그아웃</NavLink>
                     </div>
                 </div>
                 <div className="navbar navbar-expand-lg">
                     <div className="nav-item">
-                        <NavLink to={"./"}>Main</NavLink>
+                        <NavLink to={"/"}>Main</NavLink>
                     </div>
                     <div className="nav-item">
                         <form>
@@ -28,16 +28,16 @@ class Nav extends Component {
                         </form>
                     </div>
                     <div>
-                        판매하기
+                        <NavLink to={"/post"}>판매하기</NavLink>
                     </div>
                     <div>
-                        마이페이지
+                        <NavLink to={"/mypage"}>마이페이지</NavLink>
                     </div>
                     <div>
                         미림톡
                     </div>
                     <div>
-                        <NavLink to="/product">상품</NavLink>
+                        <NavLink to="/list">상품</NavLink>
                     </div>
                 </div>
                 
