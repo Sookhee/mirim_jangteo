@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 
 import Nav from "./components/nav";
 import Login from "./components/login";
@@ -10,6 +10,7 @@ import Home from "./components/home";
 import Product from "./components/product";
 import Post from "./components/post";
 import Mypage from "./components/mypage";
+import Detail from './components/detail';
 import Footer from "./components/footer";
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
                 <Route path="/list" component={Product}/>
                 <Route path="/post" component={Post}/>
                 <Route path="/mypage" component={Mypage}/>
+                <Route path="/product/:prod_id" component={Detail}/>
               </div>
               <Footer/>
             </div>

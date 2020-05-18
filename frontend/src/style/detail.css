@@ -1,0 +1,36 @@
+.detail{
+    background-color: #eee;
+}
+.detail hr{}
+
+.detail .product{
+    display: flex;
+}
+.detail .product img{
+    width: 600px;
+    height: 400px;
+}
+.detail .product .wrap-info{
+    width: 100%;
+    margin-left: 60px;
+}
+.detail .product .wrap-info .title{}
+.detail .product .wrap-info .price{}
+.detail .product .wrap-info table td{}
+
+.detail .explain{
+    background-color: #ddd;
+}
+.detail .explain .wrap-menu-nav{
+    margin: 50px 0 0 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+.detail .explain .wrap-explain{
+    width: 100%;
+    height: 260px;
+    background-color: #eee;
+}
