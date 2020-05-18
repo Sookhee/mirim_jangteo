@@ -36,7 +36,7 @@ const Detail = ({match}) => {
             <div className="explain">
                 <div className="wrap-menu-nav">
                     <NavLink to={"/product/" + match.params.prod_id + "/product-info"}>상품 정보</NavLink>
-                    <NavLink to={"/product/" + "11" + "/seller-info"}>판매자 정보</NavLink>
+                    <NavLink to={"/product/" + match.params.prod_id + "/seller-info"}>판매자 정보</NavLink>
                 </div>
                 <div className="wrap-explain">
                     <Route path={"/product/:prod_id"} exact={"true"} component={InfoProduct} prod_id={match.params.prod_id}/>
