@@ -1,0 +1,23 @@
+.post{
+}
+.post table{
+    width: 100%;
+    margin-top: 50px;
+}
+.post table tr{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.post table td{
+    height: 60px;
+    padding: 20px 0;
+    line-height: 60px;
+}
+.post table tr td:first-child{
+    width: 200px;
+    text-align: center;
+}
+.post table td input{}
+.post table td .wrap-radio{}
+.post table td .wrap-radio input{}
+.post .post-button{}
