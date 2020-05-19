@@ -1,6 +1,5 @@
 .nav{
     display: block;
-    padding: 0 150px;
 }
 .nav .navbar{
     display: flex;
@@ -8,7 +7,35 @@
 }
 .nav .navbar .nav-item{}
 .nav .navbar .nav-item .in-item{
-    margin-left: 30px;
+    margin-left: 20px;
 }
-.nav .navbar .nav-item input{}
-.nav .navbar .nav-item button{}
+.nav .navbar:nth-child(2) .nav-item .in-item{
+    padding-right: 20px;
+    border-right: 1px solid black;
+}
+.nav .navbar:nth-child(2) .nav-item .in-item:last-child{
+border: none;
+padding-right: 0px;
+}
+.nav a, .nav a:hover, .nav a:visited, .nav a:active{
+    color: #000000;
+    text-decoration: none;
+}
+.nav .navbar .nav-item:nth-child(2){
+    width: 500px;
+    text-align: right;
+}
+.nav .navbar .nav-item input{
+    width: 80%;
+    border: 1px solid #000;
+    border-right: none;
+
+}
+.nav .navbar .nav-item button{
+    width: 20%;
+    border: 1px solid #000;
+    border-left: none;
+}
+.nav .navbar .nav-item button:focus{
+    outline: none;
+}
