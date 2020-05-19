@@ -1,1 +1,4 @@
 .home{}
+.home .cont-title{
+    margin: 40px 0 0;
+}

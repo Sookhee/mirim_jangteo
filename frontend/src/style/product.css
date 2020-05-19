@@ -10,10 +10,22 @@
 
 }
 
-.item{}
+.item{
+    width: 260px;
+    background: #feedd3;
+}
 .item .img{
     width: 260px;
 }
-.item .title{}
+.item a, .item a:hover, .item a:visited, .item a:active{
+    color: #000000;
+    text-decoration: none;
+}
+.item div{
+    margin-top: 4px;
+}
+.item .title{
+    margin-top: 20px;
+}
 .item .seller{}
 .item .price{}
