@@ -28,7 +28,33 @@
     color: #ffffff;
     border: none;
 }
-.post table td .wrap-radio{}
+.post table td .wrap-radio{
+    background: #ddd;
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+.post .wrap-radio label{
+    cursor: pointer;
+    font-family: "NotoSansCJKKr Regular";
+    font-size: 20px;
+    color: #000000;
+    text-align: center;
+    line-height: 80px;
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.post .wrap-radio input[type="radio"]{
+    width: 0;
+    visibility:hidden;
+    margin-bottom: 10px;
+}
+
+.post  .wrap-radio input:checked + label {
+    color: orange;
+}
 .post table td .wrap-radio input{}
 .post .post-button{
     width: 100%;

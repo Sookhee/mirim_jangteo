@@ -13,6 +13,7 @@
 .item{
     width: 260px;
     background: #feedd3;
+    margin-bottom: 26px;
 }
 .item .img{
     width: 260px;
@@ -21,8 +22,8 @@
     color: #000000;
     text-decoration: none;
 }
-.item div{
-    margin-top: 4px;
+.item .wrap-content{
+    padding: 0 10px 10px;
 }
 .item .title{
     margin-top: 20px;
