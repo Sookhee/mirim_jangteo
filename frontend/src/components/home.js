@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Banner from "./banner";
-import ProductList from "./product-list";
-import "../style/home.css";
+import ProductList from "./product";
 
 class Home extends Component {
     render() {

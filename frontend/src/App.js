@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 
 import Nav from "./components/nav";
@@ -13,6 +12,8 @@ import Mypage from "./components/mypage";
 import Detail from './components/detail';
 import Footer from "./components/footer";
 
+import "./App.scss";
+
 class App extends Component {
   state = {
     isLogin: true,
@@ -20,14 +21,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         {
           this.state.isLogin ? 
           (
             <div>
-              <Nav/>
-              <div>
+              <div className="wrap">
+                <Nav/>
                 <Route path="/" exact={"true"} component={Home}/>
+                <Route path="/list/:keyword" component={Product}/>
                 <Route path="/list" component={Product}/>
                 <Route path="/post" component={Post}/>
                 <Route path="/mypage" component={Mypage}/>
@@ -49,17 +51,5 @@ class App extends Component {
     );
   }
 }
-// function App() {
-//   return (
-//     <Router>
-//       <div className="App">
-
-//         <Switch>
-//           
-//         </Switch>
-//       </div>
-//     </Router>
-//   );
-// }
 
 export default App;

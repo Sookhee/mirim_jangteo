@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
-import "../style/sign.css";
+import "../style/login.scss";
 
 class Login extends Component {
     render() {

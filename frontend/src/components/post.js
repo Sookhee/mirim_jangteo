@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../style/post.css";
 
 class Post extends Component {
     render() {

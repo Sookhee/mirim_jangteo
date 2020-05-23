@@ -1,0 +1,39 @@
+.nav{
+    width: 100%;
+    background: #ccc;
+
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+
+        .in-item{
+            margin-left: 20px;
+        }
+    }
+
+    a{
+        color: black;
+        text-decoration: none;
+    }
+
+    form{
+        border: 1px solid black;
+        .searchbar{
+            width: 600px;
+            height: 30px;
+            border: none;
+            &:focus{outline: none;}
+        }
+    
+        button{
+            width: 80px;
+            height: 30px;
+            background: none;
+            border: none;
+
+            &:focus{outline: none;}
+        }
+    }
+
+    
+}

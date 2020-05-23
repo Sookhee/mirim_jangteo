@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {NavLink, Route} from "react-router-dom";
-import "../style/detail.css";
 
 const Detail = ({match}) => {
     return (
