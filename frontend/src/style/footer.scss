@@ -1,6 +1,10 @@
 .footer{
     width: 100%;
-    height: 200px;
-    background: #aaa;
+    padding-top: 100px;
     clear: both;
+    .content{
+        width: 100%;
+        height: 200px;
+        background: #383b5f;
+    }
 }

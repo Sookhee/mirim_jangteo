@@ -11,6 +11,7 @@ const Detail = ({match}) => {
             prod_title: "레몬 챌린지 하실분..?",
             prod_seller: "정민지ㅣ지지",
             prod_price: 1000,
+            prod_category: "식품/영양",
             prod_isSell: "판매중",
             prod_state: "새 상품",
             prod_isChange: "불가능",
@@ -26,7 +27,7 @@ const Detail = ({match}) => {
     return (
         <div className="detail">
             <hr/>
-            전체 > {"음식"}
+            전체 > {prodState.product.prod_category}
             <hr/>
             <div className="product">
                 <div className="wrap-info">

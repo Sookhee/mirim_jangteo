@@ -9,7 +9,7 @@ class Home extends Component {
             <div className="home">
                 <Banner/>
                 <div className="cont-title">미림장터 카테고리별 인기 상품</div>
-                <ProductList/>          
+                <ProductList/>
             </div>
         );
     }

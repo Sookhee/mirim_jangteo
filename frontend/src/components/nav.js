@@ -22,7 +22,7 @@ class Nav extends Component {
             <div className="nav">
                 <div className="navbar">
                     <div className="nav-item">
-                        <NavLink to={"/mypage/" + this.props.user_id + "/pick"} activeStyle={{color: '#fda036'}}>찜한 상품</NavLink>
+                        <NavLink to={"/mypage/" + this.props.user_id + "/pick"}>찜한 상품</NavLink>
                     </div>
                     <div className="nav-item">
                         <NavLink to={"/alert"} className="in-item" activeStyle={{color: '#fda036'}}>알림</NavLink>

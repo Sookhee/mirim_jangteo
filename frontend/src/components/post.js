@@ -5,7 +5,6 @@ class Post extends Component {
     render() {
         return (
             <div className="post">
-                <div className="title">상품 등록</div>
                 <form>
                     <div className="question">상품 명</div>
                     <div className="info">
@@ -65,6 +64,7 @@ class Post extends Component {
                     <div className="info">
                         <input type="file"/>
                     </div>
+                    <button type="submit" className="submit-button">상품 등록</button>
                 </form>
             </div>
         );
