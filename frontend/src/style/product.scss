@@ -1,9 +1,7 @@
 .product{
     width: 100%;
     .wrap-product{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        margin: 0 auto;
     }
 
     a{
@@ -14,8 +12,8 @@
 
 .item{
     width: 260px;
-    margin-bottom: 40px;
-
+    margin: 0 20px 40px;
+    float: left;
     .img{
         width: 100%;
     }

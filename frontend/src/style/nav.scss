@@ -1,8 +1,9 @@
 .nav{
     width: 100%;
-    background: #ccc;
-
+    margin: 20px 0;
     .navbar{
+        height: 40px;
+        line-height: 40px;
         display: flex;
         justify-content: space-between;
 

@@ -17,6 +17,7 @@ import "./App.scss";
 class App extends Component {
   state = {
     isLogin: true,
+    user_id: 1122
   };
 
   render() {
@@ -27,12 +28,12 @@ class App extends Component {
           (
             <div>
               <div className="wrap">
-                <Nav/>
+                <Nav user_id={this.state.user_id}/>
                 <Route path="/" exact={"true"} component={Home}/>
                 <Route path="/list/:keyword" component={Product}/>
-                <Route path="/list" component={Product}/>
+                <Route path="/list" exact={"true"} component={Product}/>
                 <Route path="/post" component={Post}/>
-                <Route path="/mypage" component={Mypage}/>
+                <Route path="/mypage/:user_id" component={Mypage}/>
                 <Route path="/product/:prod_id" component={Detail}/>
               </div>
               <Footer/>
