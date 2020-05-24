@@ -100,8 +100,53 @@ router.get('/list/:search/:page', function(req, res, next) {
     });
 });
 
-router.get('/write', function(req, res, next) {
+router.get('/post', function(req, res, next) {
     res.render('write');
+});
+
+router.post('/post', function(req, res, next) {
+    // TODO: user 세션에서 가져오기
+    const user = 1;
+    let user_name;
+
+    User.find({
+        where: {member_id: user}
+    }).then((users) => {
+        user_name = users.name;
+    }).catch(err => {
+        console.error('err: ' + err);
+    });
+    
+    const title = req.body.title;
+    const category = req.body.category;
+    const price = req.body.price;
+    const content = req.body.content;
+    const status = req.body.status;
+    const place = req.body.place;
+    const swap = req.body.swap;
+    const image = req.body.image;
+
+    let product_id;
+
+    Product.create({
+        member_id: user,
+        name: user_name,
+        product_title: title,
+        product_content: content,
+        category: category,
+        product_price: price,
+        product_status: status,
+        product_img: image,
+        product_place: place,
+        product_swap: swap
+    }).then(result => {
+        product_id = result.product_id;
+        // res.json(result);
+        res.redirect('/detail/' + product_id);
+    }).catch(err => {
+        console.error('err: ' + err);
+    });
+
 });
 
 router.get('/detail/:index', function(req, res, next) {
