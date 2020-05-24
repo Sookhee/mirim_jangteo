@@ -2,15 +2,16 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('like_lists', {
-      member_id: {
-        type: Sequelize.STRING,
+      id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      product_id: {
-        type: Sequelize.INTEGER
+      member_id: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      liked_at: {
+      product_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {

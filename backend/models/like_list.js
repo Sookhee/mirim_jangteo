@@ -1,16 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const like_list = sequelize.define('like_list', {
-    member_id: {
-      type: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    product_id: {
-      type: DataTypes.INTEGER,
+    member_id: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    liked_at: {
+    product_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
