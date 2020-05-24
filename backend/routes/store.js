@@ -150,7 +150,33 @@ router.post('/post', function(req, res, next) {
 });
 
 router.get('/detail/:index', function(req, res, next) {
-    res.render('detail');
+    var index = req.params.product_id;
+
+    var products;
+
+    Product.find({
+        where: {product_id: index}
+    }).then((product) => {
+        products = {
+            id: index,
+            seller: product.name,
+            title: product.product_title,
+            content: product.product_content,
+            category: product.category,
+            price: product.product_price,
+            status: product.product_status,
+            deal_status: product.product_deal_status,
+            image: product.product_img,
+            count: product.product_count,
+            place: product.product_place,
+            swap: product.product_swap
+        };
+        res.json(products);
+    }).catch(err => {
+        console.error('err: ' + err);
+    });
+
+    // res.render('detail');
 });
 
 module.exports = router;
