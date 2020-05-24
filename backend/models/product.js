@@ -29,11 +29,24 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    product_deal_status: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     product_img: {
       type: DataTypes.BLOB,
       allowNull: false
     },
     product_count: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    product_place: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    product_swap: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

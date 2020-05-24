@@ -36,11 +36,24 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      product_deal_status: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       product_img: {
         type: Sequelize.BLOB,
         allowNull: false
       },
       product_count: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+      },
+      product_place: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      product_swap: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
