@@ -1,7 +1,8 @@
-import * as Op from "sequelize";
-
 const express = require('express');
 const router = express.Router();
+
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
 
 var {User} = require('../models');
 var {Sale} = require('../models');
@@ -35,7 +36,7 @@ router.get('/list', function(req, res, next) {
             product_status: 0,
             category: category
         },
-        order: 'count DESC',
+        order: 'product_count DESC',
         limit: 8
     }).then((product) => {
         products = {
@@ -60,18 +61,18 @@ router.get('/list/:search', function(req, res, next) {
 
 router.get('/list/:search/:page', function(req, res, next) {
     var page = req.params.page;
-    var search = req.body.search;
+    var search = req.params.search;
     // order = 0 이면 인기순, order = 1 이면 최신순
     var order = 0;
 
     var orders, products;
 
     if (order === 0)
-        orders = 'count';
+        orders = 'product_count';
     else
         orders = 'createdAt';
 
-    Product.find({
+    Product.findAll({
         where: {
             product_title: {
                 [Op.like]: '%' + search + '%'
@@ -85,15 +86,17 @@ router.get('/list/:search/:page', function(req, res, next) {
             seller: product.name,
             price: product.product_price,
             image: product.product_img
-        }
-    });
+        };
 
-    res.json({
-        products: products,
-        page: page,
-        length: products.length - 1,
-        page_num: 20,
-        pass: true
+        res.json({
+            products: products,
+            page: page,
+            length: products.length - 1,
+            page_num: 20,
+            pass: true
+        });
+    }).catch( err => {
+        console.error('err: ' + err);
     });
 });
 
