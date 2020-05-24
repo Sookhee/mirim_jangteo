@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     product_deal_status: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     product_img: {
       type: DataTypes.BLOB,
