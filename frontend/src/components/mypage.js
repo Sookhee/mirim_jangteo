@@ -46,7 +46,7 @@ const Mypage = ({match}) => {
                 </NavLink>
             </div>
             <div className="wrap-menu">
-                <Route path={"/mypage/:user_id"} exact={"true"} component={ProductList}/>
+                <Route path={"/mypage/:user_id"} exact={true} component={ProductList}/>
                 <Route path={"/mypage/:user_id/pick"} component={ProductList}/>
             </div>    
         </div>
