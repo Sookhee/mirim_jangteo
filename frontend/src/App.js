@@ -12,12 +12,13 @@ import Mypage from "./components/mypage";
 import Detail from './components/detail';
 import Footer from "./components/footer";
 
+
 import "./App.scss";
 
 class App extends Component {
   state = {
     isLogin: true,
-    user_id: 1122
+    user_id: 4568
   };
 
   render() {
@@ -29,9 +30,9 @@ class App extends Component {
             <div>
               <div className="wrap">
                 <Nav user_id={this.state.user_id}/>
-                <Route path="/" exact={"true"} component={Home}/>
+                <Route path="/" exact={true} component={Home}/>
                 <Route path="/list/:keyword" component={Product}/>
-                <Route path="/list" exact={"true"} component={Product}/>
+                <Route path="/list" exact={true} component={Product}/>
                 <Route path="/post" component={Post}/>
                 <Route path="/mypage/:user_id" component={Mypage}/>
                 <Route path="/product/:prod_id" component={Detail}/>
@@ -42,7 +43,7 @@ class App extends Component {
           :
           (
             <Switch>
-              <Route path="/" exact={"true"} component={Login}/>
+              <Route path="/" exact={true} component={Login}/>
               <Route path="/sign-in" component={Login}/>
               <Route path="/sign-up" component={SignUp}/>
             </Switch>

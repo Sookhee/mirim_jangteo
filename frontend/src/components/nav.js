@@ -33,7 +33,7 @@ class Nav extends Component {
                     <div className="nav-item">
                         <NavLink
                         to={"/"}
-                        exact={"true"}
+                        exact={true}
                         activeStyle={{color: '#fda036'}}>
                             Main
                         </NavLink>

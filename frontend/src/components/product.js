@@ -1,8 +1,20 @@
 import React, { Component } from "react";
 import {NavLink} from "react-router-dom";
+import Axios from 'axios';
 import "../style/product.scss";
 
 class ProductList extends Component {
+
+    getProductData = () => {
+        Axios.get(`http://newsapi.org/v2/top-headlines?country=kr&apiKey=c6e1f1772e1b4036ab8c212686e2ec4a`)
+        .then(function(response){
+            console.log(response.data.articles);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+    };
+
     constructor(props){
         super(props);
         this.state = {
@@ -70,6 +82,7 @@ class ProductList extends Component {
     render() {
         return (
             <div className="product">
+                {this.getProductData()}
                 <div className="wrap-product">
                     {
                     this.state.productData.map((product, i) => {
