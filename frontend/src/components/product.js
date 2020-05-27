@@ -1,8 +1,27 @@
 import React, { Component } from "react";
 import {NavLink} from "react-router-dom";
+import Axios from "axios";
 import "../style/product.scss";
 
 class ProductList extends Component {
+
+    state = {
+        loading: false,
+        ItemList: []
+    };
+
+    getProductData = (event) =>{
+        Axios.get('http://localhost:5000/store/popular/' + 1)
+            .then(function(response){
+                console.log(response);
+            })
+            .catch(function (error){
+                console.error(error);
+                console.log('Axois 들어오김 함..!')
+            })
+    };
+
+
     constructor(props){
         super(props);
         this.state = {
@@ -70,6 +89,7 @@ class ProductList extends Component {
     render() {
         return (
             <div className="product">
+                {this.getProductData()}
                 <div className="wrap-product">
                     {
                     this.state.productData.map((product, i) => {
@@ -95,7 +115,7 @@ class Item extends Component {
     pricerWithCommas(price) {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    
+
     render() {
         return (
             <div className="item">
