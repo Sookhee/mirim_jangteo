@@ -1,26 +1,19 @@
 import React, { Component } from "react";
 import {NavLink} from "react-router-dom";
-import Axios from "axios";
+import Axios from 'axios';
 import "../style/product.scss";
 
 class ProductList extends Component {
 
-    state = {
-        loading: false,
-        ItemList: []
+    getProductData = () => {
+        Axios.get(`http://newsapi.org/v2/top-headlines?country=kr&apiKey=c6e1f1772e1b4036ab8c212686e2ec4a`)
+        .then(function(response){
+            console.log(response.data.articles);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
     };
-
-    getProductData = (event) =>{
-        Axios.get('http://localhost:5000/store/popular/' + 1)
-            .then(function(response){
-                console.log(response);
-            })
-            .catch(function (error){
-                console.error(error);
-                console.log('Axois 들어오김 함..!')
-            })
-    };
-
 
     constructor(props){
         super(props);
@@ -115,7 +108,7 @@ class Item extends Component {
     pricerWithCommas(price) {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-
+    
     render() {
         return (
             <div className="item">
