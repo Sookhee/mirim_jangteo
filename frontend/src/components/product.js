@@ -4,34 +4,53 @@ import Axios from 'axios';
 import "../style/product.scss";
 
 class ProductList extends Component {
-
     state = {
-        productData: []
+        productData: [
+            // {
+            //     "id":1,
+            //     "member_id":"s2018w12",
+            //     "name":"e33j",
+            //     "product_title":"house",
+            //     "product_content":"i want to go home !!!!",
+            //     "category":1,
+            //     "product_price":10000,
+            //     "product_status":0,
+            //     "product_deal_status":0,
+            //     "product_img":"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+            //     "product_count":0,
+            //     "product_place":"in front of second teachers room",
+            //     "product_swap":0,
+            //     "createdAt":"2020-05-28T10:50:48.000Z",
+            //     "updatedAt":"2020-05-28T10:50:48.000Z"
+            // }
+        ]
     }
 
-    getUsuarios = _ => {
-        Axios('http://localhost:4000/member')
+    getProductData = () => {
+        fetch('http://localhost:5000/test')
         .then(response => response.json())
         .then(response => this.setState({productData: response}))
-        .then(console.log(this.state.productData))
         .catch(err => console.log(err))
     }
 
+    componentDidMount(){
+        this.getProductData()
+      }
 
     render() {
         return (
             <div className="product">
-                {this.getProductData()}
                 <div className="wrap-product">
                     {
                     this.state.productData.map((product, i) => {
                         return (
                             <Item key={i}
                                 prod_id={product.id}
-                                prod_img={product.img}
-                                prod_title={product.title}
-                                prod_seller={product.seller}
-                                prod_price={product.price}
+                                prod_img={product.product_img}
+                                prod_title={product.product_title}
+                                prod_seller={product.name}
+                                prod_price={product.product_price}
+                                prod_isSell={product.product_deal_status}
                             />
                             );
                         })
@@ -51,12 +70,8 @@ class Item extends Component {
     render() {
         return (
             <div className="item">
-                <NavLink to={"/product/" + this.props.prod_id}
-                prod_id={this.props.prod_id}
-                prod_img={this.props.img}
-                prod_title={this.props.title}
-                prod_seller={this.props.seller}
-                prod_price={this.props.price}>
+                {console.log(this.props.prod_id)}
+                <NavLink to={"/product/" + this.props.prod_id}>
                     <img src={this.props.prod_img} className="img"></img>
                     <div className="wrap-content">
                         <div className="title">{this.props.prod_title}</div>

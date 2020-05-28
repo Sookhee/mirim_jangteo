@@ -114,13 +114,15 @@ app.get('/test', (req, res) => {
 
   const query = 'SELECT * FROM products WHERE product_status = 0 AND category = 1';
 
+  const productList = new Array();
   connection.query(query, (err, result) => {
     if (err) {
       return res.send(err);
     } else {
-      return res.json({
-        data: result
-      });
+      for(let i = 0; i < result.length; i++){
+        productList[i] = result[i];
+      }
+      res.send(JSON.stringify(productList))
     }
   });
   //

@@ -1,25 +1,25 @@
 {
   "development": {
-    "username": "root",
-    "password": "mirim2",
-    "database": "mijang",
-    "host": "127.0.0.1",
+    "username": "mirim_jangteo",
+    "password": "mirim123789jangteo",
+    "database": "mirim_jangteo",
+    "host": "52.14.5.225",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
-    "username": "root",
-    "password": "mirim2",
-    "database": "mijang",
-    "host": "127.0.0.1",
+    "username": "mirim_jangteo",
+    "password": "mirim123789jangteo",
+    "database": "mirim_jangteo",
+    "host": "52.14.5.225",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": "mirim2",
-    "database": "mijang",
-    "host": "127.0.0.1",
+    "username": "mirim_jangteo",
+    "password": "mirim123789jangteo",
+    "database": "mirim_jangteo",
+    "host": "52.14.5.225",
     "dialect": "mysql",
     "operatorsAliases": false
   }
