@@ -13,7 +13,9 @@ var {Banner} = require('../models');
 // 카테고리별 인기있는 상품 8개
 router.get('/popular/:category', function(req, res, next) {
     // 카테고리 불러오기
-    var category = req.params.category;
+    // var category = req.params.category;
+    var category = 1;
+    var pdt = {};
 
     Product.findAll({
         where: {
@@ -23,13 +25,15 @@ router.get('/popular/:category', function(req, res, next) {
         order: 'product_count DESC',
         limit: 8
     }).then((products) => {
-        res.json({
+        pdt[0] = {
             id: products.product_id,
             title: products.product_title,
             seller: products.name,
             price: products.product_price,
             image: products.product_img
-        });
+        };
+        var pdtStr = JSON.stringify(pdt);
+        res.send(pdtStr);
     }).catch((err) => {
         console.error('err: ' + err);
     });
@@ -135,7 +139,7 @@ router.post('/post', function(req, res, next) {
             product_id: result.product_id
         });
     }).catch(err => {
-        console.error('err: ' + error);
+        console.error('err: ' + err);
     });
 
 });
