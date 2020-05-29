@@ -27,7 +27,7 @@ class ProductList extends Component {
     }
 
     getProductData = () => {
-        fetch('http://localhost:5000/test')
+        fetch('http://localhost:5000/popular')
         .then(response => response.json())
         .then(response => this.setState({productData: response}))
         .catch(err => console.log(err))
