@@ -1,38 +1,15 @@
 import React, { Component } from "react";
 import {NavLink} from "react-router-dom";
 import Axios from 'axios';
-import "../style/product.scss";
+import "../style/banner.scss";
 
-class BannerList extends Component {
-    state = {
-        bannerData: []
-    }
-
-    getBannerData = () => {
-        fetch('http://localhost:5000/banner')
-            .then(response => response.json())
-            .then(response => this.setState({bannerData: response}))
-            .catch(err => console.log(err))
-    }
-
-    componentDidMount(){
-        this.getBannerData()
-    }
+class Banner extends Component {
 
     render() {
         return (
             <div className="banner">
                 <div className="wrap-banner">
-                    {
-                        this.state.bannerData.map((banner, i) => {
-                            return (
-                                <Item key={i}
-                                      prod_id={banner.id}
-                                      prod_img={banner.banner_img}
-                                />
-                            );
-                        })
-                    }
+                    df
                 </div>
             </div>
         );
@@ -53,4 +30,4 @@ class Item extends Component {
     }
 }
 
-export default BannerList;
+export default Banner;

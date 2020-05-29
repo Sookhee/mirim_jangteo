@@ -1,6 +1,19 @@
 .home{
+    width: 1300px;
+    margin: 0 auto;
+    .cont-sub-title{
+        font-size: 0.9em;
+        font-weight: 500;
+        color: #0b53bd;
+    }
     .cont-title{
-        font-size: 20px;
-        margin-bottom: 60px;
+        font-size: 1.3em;
+        font-weight: 500;
+    }
+
+    .home-br{
+        clear: both;
+        width: 100%;
+        height: 100px;
     }
 }

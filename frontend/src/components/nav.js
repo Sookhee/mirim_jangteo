@@ -20,40 +20,42 @@ class Nav extends Component {
     render() {
         return (
             <div className="nav">
-                <div className="navbar">
-                    <div className="nav-item">
-                        <NavLink to={"/mypage/" + this.props.user_id + "/pick"}>찜한 상품</NavLink>
-                    </div>
-                    <div className="nav-item">
-                        <NavLink to={"/alert"} className="in-item" activeStyle={{color: '#fda036'}}>알림</NavLink>
-                        <NavLink to={"/logout"} className="in-item">로그아웃</NavLink>
+                <div className="wrap-nav top">
+                    <div className="navbar">
+                        <div className="nav-item">
+                            <NavLink to={"/mypage/" + this.props.user_id + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
+                        </div>
+                        <div className="nav-item">
+                            <NavLink to={"/alert"} className="in-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>알림</NavLink>
+                            <NavLink to={"/logout"} className="in-item">로그아웃</NavLink>
+                        </div>
                     </div>
                 </div>
-                <div className="navbar">
-                    <div className="nav-item">
-                        <NavLink
-                        to={"/"}
-                        exact={true}
-                        activeStyle={{color: '#fda036'}}>
-                            Main
-                        </NavLink>
-                    </div>
-                    <div className="nav-item">
-                        <form>
-                            <input type="text"
-                            className="searchbar"
-                            value={this.state.search}
-                            onChange={this.handleChange}/>
+                <div className="wrap-nav bottom">
+                    <div className="navbar">
+                        <div className="nav-item-wrap">
                             <NavLink
-                                to={"/list/" + this.state.search}>
-                                <button type="submit">검색</button>
+                            to={"/"}
+                            exact={true}>
+                                <div className="main"></div>
                             </NavLink>
-                        </form>
-                    </div>
-                    <div className="nav-item wrap-nav-item">
-                        <NavLink to={"/post"} className="in-item" activeStyle={{color: '#fda036'}}>판매하기</NavLink>
-                        <NavLink to={"/mypage/" + this.props.user_id} className="in-item" activeStyle={{color: '#fda036'}}>마이페이지</NavLink>
-                        <NavLink to={"/mirim-talk"} className="in-item" activeStyle={{color: '#fda036'}}>미림톡</NavLink>
+                            <form>
+                                <input type="text"
+                                className="searchbar"
+                                placeholder="찾고 싶은 상품명을 입력해주세요"
+                                value={this.state.search}
+                                onChange={this.handleChange}/>
+                                <NavLink
+                                    to={"/list/" + this.state.search}>
+                                    <button type="submit"></button>
+                                </NavLink>
+                            </form>
+                        </div>
+                        <div className="nav-item-wrap wrap-menu">
+                            <NavLink to={"/post"} className="in-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
+                            <NavLink to={"/mypage/" + this.props.user_id} className="in-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
+                            <NavLink to={"/mirim-talk"} className="in-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
+                        </div>
                     </div>
                 </div>
             </div>
