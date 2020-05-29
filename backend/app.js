@@ -159,27 +159,45 @@ app.get('/search/:keyword/:page', function(req, res, next) {
   // TODO: order = 0: 인기순, order = 1: 최신순
   // 소녀나라 예시: <a href="/shop/list.php?page=1&cate=0104&orby=1">신상품</a>
   var order = 0;
+  let query = '';
 
-  Product.findAll({
-    where: {
-      [Op.or]: [
-        {product_title: {
-            [Op.like]: '%' + keyword + '%'
-          }},
-        {product_content: {
-            [Op.like]: '%' + keyword + '%'
-          }}
-      ]
-    },
-    order: 'product_count DESC'
-  }).then((products) => {
-    res.json({
-      data: products
-    });
-  }).catch(err => {
-    console.error('err: ' + err);
-    res.send(err);
+  if (order === 0)
+    query = "SELECT * FROM products WHERE product_title LIKE '%?%' OR product_content LIKE '%?%' ORDER BY product_count DESC";
+  else
+    query = "SELECT * FROM products WHERE product_title LIKE '%?%' OR product_content LIKE '%?%' ORDER BY createdAt DESC";
+
+  const searchList = [];
+  connection.query(query, [keyword], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        searchList[i] = result[i];
+      }
+      res.send(JSON.stringify(searchList));
+    }
   });
+
+  // Product.findAll({
+  //   where: {
+  //     [Op.or]: [
+  //       {product_title: {
+  //           [Op.like]: '%' + keyword + '%'
+  //         }},
+  //       {product_content: {
+  //           [Op.like]: '%' + keyword + '%'
+  //         }}
+  //     ]
+  //   },
+  //   order: 'product_count DESC'
+  // }).then((products) => {
+  //   res.json({
+  //     data: products
+  //   });
+  // }).catch(err => {
+  //   console.error('err: ' + err);
+  //   res.send(err);
+  // });
 });
 
 // 상품 게시
