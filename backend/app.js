@@ -131,23 +131,23 @@ app.get('/popular', (req, res) => {
 });
 
 // 배너
-app.get('/banner/:id', function(req, res, next) {
-  // 배너 아이디 불러와서 하나하나 가져오기
-  var id = req.params.banner_id;
+app.get('/banner', function(req, res, next) {
+  // TODO: banner 불러오기 or ajax 이용하기
+  // const id = req.params.banner_id;
+  const id = 2;
+  const query = 'SELECT * FROM banners WHERE id = ? ORDER BY createdAt DESC';
 
-  Banner.findAll({
-    where: {
-      banner_id: id
-    },
-    order: 'createdAt DESC'
-  }).then((banner) => {
-    res.json({
-      data: banner
-    });
-  }).catch(err => {
-    console.error('err: ' + err);
-    res.send(err);
-  })
+  const bannerList = [];
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        bannerList[i] = result[i];
+      }
+      res.send(JSON.stringify(bannerList));
+    }
+  });
 });
 
 // 검색
