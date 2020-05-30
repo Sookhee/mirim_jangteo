@@ -42,6 +42,7 @@ class Nav extends Component {
                             <form>
                                 <input type="text"
                                 className="searchbar"
+                                placeholder="찾고 싶은 상품명을 입력해주세요"
                                 value={this.state.search}
                                 onChange={this.handleChange}/>
                                 <NavLink
