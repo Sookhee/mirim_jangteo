@@ -28,8 +28,8 @@ class App extends Component {
           this.state.isLogin ? 
           (
             <div>
+              <Nav user_id={this.state.user_id}/>
               <div className="wrap">
-                <Nav user_id={this.state.user_id}/>
                 <Route path="/" exact={true} component={Home}/>
                 <Route path="/list/:keyword" component={Product}/>
                 <Route path="/list" exact={true} component={Product}/>

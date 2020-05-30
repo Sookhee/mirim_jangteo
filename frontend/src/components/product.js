@@ -5,25 +5,7 @@ import "../style/product.scss";
 
 class ProductList extends Component {
     state = {
-        productData: [
-            // {
-            //     "id":1,
-            //     "member_id":"s2018w12",
-            //     "name":"e33j",
-            //     "product_title":"house",
-            //     "product_content":"i want to go home !!!!",
-            //     "category":1,
-            //     "product_price":10000,
-            //     "product_status":0,
-            //     "product_deal_status":0,
-            //     "product_img":"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
-            //     "product_count":0,
-            //     "product_place":"in front of second teachers room",
-            //     "product_swap":0,
-            //     "createdAt":"2020-05-28T10:50:48.000Z",
-            //     "updatedAt":"2020-05-28T10:50:48.000Z"
-            // }
-        ]
+        productData: []
     }
 
     getProductData = () => {
