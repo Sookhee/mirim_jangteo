@@ -1,3 +1,4 @@
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -110,12 +111,14 @@ var {Banner} = require('./models');
 
 
 // 카테고리별 인기있는 상품 8개
-app.get('/test', (req, res) => {
+app.get('/popular', (req, res) => {
+  // TODO: category 불러오기 or ajax 이용하기
+  // const category = req.params.category;
+  const category = 1;
+  const query = 'SELECT * FROM products WHERE product_status = 0 AND category = ? ORDER BY product_count DESC LIMIT 8';
 
-  const query = 'SELECT * FROM products WHERE product_status = 0 AND category = 1';
-
-  const productList = new Array();
-  connection.query(query, (err, result) => {
+  const productList = [];
+  connection.query(query, [category], (err, result) => {
     if (err) {
       return res.send(err);
     } else {
@@ -125,66 +128,26 @@ app.get('/test', (req, res) => {
       res.send(JSON.stringify(productList))
     }
   });
-  //
-  // Product.find({
-  //   where: {
-  //     product_status: 0,
-  //     category: 1
-  //   }
-  // }).then((products) => {
-  //   return res.json({
-  //     data: products
-  //   });
-  // }).catch(err => {
-  //   return res.send(err);
-  // })
-});
-
-
-
-// 카테고리별 인기있는 상품 8개
-app.get('/popular/:category', function(req, res, next) {
-  // 카테고리 불러오기
-  // var category = req.params.category;
-  var category = 1;
-  var pdt = {};
-
-  Product.findAll({
-    where: {
-      product_status: 0,
-      category: category
-    },
-    order: 'product_count DESC',
-    limit: 8
-  }).then((products) => {
-    res.json({
-      data: products
-    });
-  }).catch((err) => {
-    console.error('err: ' + err);
-    res.send(err);
-  });
-
 });
 
 // 배너
-app.get('/banner/:id', function(req, res, next) {
-  // 배너 아이디 불러와서 하나하나 가져오기
-  var id = req.params.banner_id;
+app.get('/banner', function(req, res, next) {
+  // TODO: banner 불러오기 or ajax 이용하기
+  // const id = req.params.banner_id;
+  const id = 2;
+  const query = 'SELECT * FROM banners WHERE id = ? ORDER BY createdAt DESC';
 
-  Banner.findAll({
-    where: {
-      banner_id: id
-    },
-    order: 'createdAt DESC'
-  }).then((banner) => {
-    res.json({
-      data: banner
-    });
-  }).catch(err => {
-    console.error('err: ' + err);
-    res.send(err);
-  })
+  const bannerList = [];
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        bannerList[i] = result[i];
+      }
+      res.send(JSON.stringify(bannerList));
+    }
+  });
 });
 
 // 검색
