@@ -10,6 +10,7 @@ import Post from "./components/post";
 import Mypage from "./components/mypage";
 import Detail from './components/detail';
 import Footer from "./components/footer";
+import FalseFooter from "./components/falseFooter";
 
 
 import "./App.scss";
@@ -23,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        
         {
           this.state.isLogin ? 
           (
@@ -41,11 +43,14 @@ class App extends Component {
           )
           :
           (
-            <Switch>
-              <Route path="/" exact={true} component={Login}/>
-              <Route path="/sign-in" component={Login}/>
-              <Route path="/sign-up" component={SignUp}/>
-            </Switch>
+            <div>
+              <Switch>
+                <Route path="/" exact={true} component={Login}/>
+                <Route path="/sign-in" component={Login}/>
+                <Route path="/sign-up" component={SignUp}/>
+              </Switch>
+              <FalseFooter/>
+            </div>
           )
         }
       </div>

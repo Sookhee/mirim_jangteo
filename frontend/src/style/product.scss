@@ -1,7 +1,24 @@
 .product{
     width: 100%;
+    min-height: 100vh;
+    background: #F1F3F6;
+
+    .product-info{
+        .wrap-info{
+            width: 1300px;
+            margin: 0 auto;
+            padding-top: 40px;
+            font-weight: 600;
+            span{
+                color: #609ae9;
+            }
+        }
+    }
+
     .wrap-product{
+        width: 1300px;
         margin: 0 auto;
+        padding: 30px 0 0 0;
     }
 
     a{

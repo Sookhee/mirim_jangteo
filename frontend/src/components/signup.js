@@ -1,45 +1,45 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import '../style/signup.scss';
 
 export default class SignUp extends Component {
     render() {
         return (
-            <div className="auth-wrapper">
-                <div className="auth-inner">
+            <div className="signup">
+                <div className="signup-form">
+                <div className="logo"></div>
+                    <div className="title">우리 학교 중고거래, 미림 장터에서 시작하세요!</div>
+                    <div className="login-hr-wrap">
+                        <div className="login-hr-title">회원가입</div>
+                        <div className="login-hr"></div>
+                    </div>
                     <form>
-                        <h3>Sign Up</h3>
-
-                        <div className="form-group">
-                            <label>이메일</label>
-                            <input type="email" className="form-control" placeholder="미림계정" />
+                        <div className="wrap-input">
+                            <input type="text" className="email"
+                            placeholder="이메일"/>
+                            <div>@</div>
+                            <input type="text" value="e-mirim.hs.kr" className="fix-email" readOnly/>
                         </div>
-
-                        <div className="form-group">
-                            <label>이름</label>
-                            <input type="text" className="form-control" placeholder="본명" />
+                        <div className="wrap-input">
+                            <input type="password"
+                            placeholder="비밀번호 (영문자, 숫자, 특수문자 8-30자)"/>
                         </div>
-
-                        <div className="form-group">
-                            <label>전화번호</label>
-                            <input type="text" className="form-control" placeholder="숫자만 입력해주세요" />
+                        <div className="wrap-input">
+                            <input type="password"
+                            placeholder="비밀번호 확인"/>
                         </div>
-
-                        <div className="form-group">
-                            <label>비밀번호</label>
-                            <input type="password" className="form-control" placeholder="영어 대소문자, 숫자 조합" />
+                        <div className="wrap-input">
+                            <input type="number"
+                            placeholder="전화번호 (숫자만)"/>
                         </div>
-
-                        <div className="form-group">
-                            <label>비밀번호 재입력</label>
-                            <input type="password" className="form-control" placeholder="" />
-                        </div>
-
-                        
-                        <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-                        <p className="text-right">
-                            Already registered <Link to={"/sign-in"}>Sign in?</Link>
-                        </p>
+                        <button className="login-btn">회원가입</button>
                     </form>
+                    <div className="wrap-link">
+                        이미 가입하신 회원인가요?
+                        <NavLink to="./sign-in">로그인</NavLink>
+                    </div>
+
+                    <div className="login-hr"></div>
                 </div>
             </div>
         );
