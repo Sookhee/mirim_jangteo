@@ -8,6 +8,15 @@ class PopularList extends Component {
         productData: []
     }
 
+    cateBannerData = [
+        'https://github.com/Sookhee/mirim_jangteo/blob/master/frontend/src/img/cate-banner1.png?raw=true',
+        'https://github.com/Sookhee/mirim_jangteo/blob/master/frontend/src/img/cate-banner2.png?raw=true',
+        'https://github.com/Sookhee/mirim_jangteo/blob/master/frontend/src/img/cate-banner3.png?raw=true',
+        'https://github.com/Sookhee/mirim_jangteo/blob/master/frontend/src/img/cate-banner4.png?raw=true',
+        'https://github.com/Sookhee/mirim_jangteo/blob/master/frontend/src/img/cate-banner5.png?raw=true',
+        'https://github.com/Sookhee/mirim_jangteo/blob/master/frontend/src/img/cate-banner6.png?raw=true',
+    ]
+
     getProductData = () => {
         fetch('http://localhost:5000/popular')
         .then(response => response.json())
@@ -47,7 +56,7 @@ class PopularList extends Component {
                 </div>
                 <div className="wrap-product">
                     <div className="category-intro">
-                        <img src=''/>
+                        <img src={this.cateBannerData[0]} className="cate-intro-img"/>
                     </div>
                     {
                     this.state.productData.map((product, i) => {
