@@ -44,6 +44,9 @@ class ProductList extends Component {
                         })
                     }
                 </div>
+                <div className="pagination">
+                    <span>1</span>
+                </div>
             </div>
         );
     }

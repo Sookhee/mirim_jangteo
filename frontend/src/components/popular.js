@@ -46,6 +46,9 @@ class PopularList extends Component {
                     </div>
                 </div>
                 <div className="wrap-product">
+                    <div className="category-intro">
+                        <img src=''/>
+                    </div>
                     {
                     this.state.productData.map((product, i) => {
                         return (

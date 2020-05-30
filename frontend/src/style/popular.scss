@@ -36,6 +36,16 @@
 
     .wrap-product{
         margin: 0 auto;
+
+        .category-intro{
+            width: 400px;
+            height: 260px;
+            margin: 0 20px 30px 0;
+            background: #ffffff;
+            border-radius: 4px;
+            float: left;
+            box-shadow: 0.5px 0.5px 3px 0 rgba(0,0,0,0.2);
+        }
     }
 
 }

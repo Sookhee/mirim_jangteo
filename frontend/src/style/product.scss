@@ -25,4 +25,14 @@
         color: black;
         text-decoration: none;
     }
+
+    .pagination{
+        clear: both;
+        width: 1300px;
+        margin: 0 auto;
+        text-align: center;
+        &:hover{
+            cursor: pointer;
+        }
+    }
 }
