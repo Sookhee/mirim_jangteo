@@ -9,7 +9,7 @@ class Banner extends Component {
         return (
             <div className="banner">
                 <div className="wrap-banner">
-                    df
+                    미림 장터 배너입니다.
                 </div>
             </div>
         );

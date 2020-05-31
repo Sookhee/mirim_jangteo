@@ -4,8 +4,6 @@ import "../style/mypage.scss";
 
 import ProductList from './product';
 
-
-
 const Mypage = ({match}) => {
 
     const [userState, setUserState] = useState({
