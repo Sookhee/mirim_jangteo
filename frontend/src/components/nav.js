@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import {AppContext} from '../Context';
 import {NavLink} from "react-router-dom";
 import "../style/nav.scss";
 
 class Nav extends Component {
+    static contextType = AppContext;
+    
     state = {
         search: ''
     }
@@ -23,11 +26,11 @@ class Nav extends Component {
                 <div className="wrap-nav top">
                     <div className="navbar">
                         <div className="nav-item">
-                            <NavLink to={"/mypage/" + this.props.user_id + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
+                            <NavLink to={"/mypage/" + this.context.userId + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
                         </div>
                         <div className="nav-item">
                             <NavLink to={"/alert"} className="in-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>알림</NavLink>
-                            <NavLink to={"/logout"} className="in-item">로그아웃</NavLink>
+                            <NavLink to={"/sign-in"} className="in-item">로그아웃</NavLink>
                         </div>
                     </div>
                 </div>
@@ -53,7 +56,7 @@ class Nav extends Component {
                         </div>
                         <div className="nav-item-wrap wrap-menu">
                             <NavLink to={"/post"} className="in-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
-                            <NavLink to={"/mypage/" + this.props.user_id} className="in-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
+                            <NavLink to={"/mypage/" + this.context.userId} className="in-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
                             <NavLink to={"/mirim-talk"} className="in-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
                         </div>
                     </div>
