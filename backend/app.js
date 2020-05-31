@@ -80,6 +80,7 @@ app.get('/myproduct/:member_id', function(req, res, next) {
       for (let i = 0; i < result.length; i++) {
         productList[i] = result[i];
       }
+      productList.push({length: result.length});
       res.send(productList);
     }
   });
@@ -165,6 +166,7 @@ app.get('/search/:keyword/:order/:page', function(req, res, next) {
       for (let i = 0; i < result.length; i++) {
         searchList[i] = result[i];
       }
+      searchList.push({length: result.length});
       // 여기서 페이지를 같이 보내줘야 페이징이 되려나
       res.send(JSON.stringify(searchList));
     }
