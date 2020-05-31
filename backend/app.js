@@ -110,11 +110,9 @@ var {Banner} = require('./models');
 
 
 
-// 카테고리별 인기있는 상품 8개
-app.get('/popular', (req, res) => {
-  // TODO: category 불러오기 or ajax 이용하기
-  // const category = req.params.category;
-  const category = 1;
+// 카테고리별 인기있는 상품 8개 (끝)
+app.get('/popular/:category', (req, res) => {
+  const category = req.params.category;
   const query = 'SELECT * FROM products WHERE product_status = 0 AND category = ? ORDER BY product_count DESC LIMIT 8';
 
   const productList = [];
@@ -130,11 +128,9 @@ app.get('/popular', (req, res) => {
   });
 });
 
-// 배너
-app.get('/banner', function(req, res, next) {
-  // TODO: banner 불러오기 or ajax 이용하기
-  // const id = req.params.banner_id;
-  const id = 2;
+// 배너 (끝)
+app.get('/banner/:id', function(req, res, next) {
+  const id = req.params.id;
   const query = 'SELECT * FROM banners WHERE id = ? ORDER BY createdAt DESC';
 
   const bannerList = [];
@@ -150,69 +146,40 @@ app.get('/banner', function(req, res, next) {
   });
 });
 
-// 검색
-app.get('/search/:keyword/:page', function(req, res, next) {
+// 검색 (페이징 빼고 끝)
+app.get('/search/:keyword/:order/:page', function(req, res, next) {
   // 키워드랑 현재 무슨 페이지인지 가져오기
-  var keyword = req.params.keyword;
-  var page = req.params.page;
-  // 인기순인지 최신순인지 불러오기
-  // TODO: order = 0: 인기순, order = 1: 최신순
-  // 소녀나라 예시: <a href="/shop/list.php?page=1&cate=0104&orby=1">신상품</a>
-  var order = 0;
+  const keyword = req.params.keyword;
+  const order = req.params.order;
+  const page = req.params.page;
+  // const page = 1;
+  // order = 0: 인기순, order = 1: 최신순
   let query = '';
 
-  if (order === 0)
-    query = "SELECT * FROM products WHERE product_title LIKE '%?%' OR product_content LIKE '%?%' ORDER BY product_count DESC";
-  else
-    query = "SELECT * FROM products WHERE product_title LIKE '%?%' OR product_content LIKE '%?%' ORDER BY createdAt DESC";
+  if (order == 0)
+    query = "SELECT * FROM products WHERE product_title LIKE concat('%', ?, '%') OR product_content LIKE concat('%', ?, '%') ORDER BY product_count DESC";
+  else if (order == 1)
+    query = "SELECT * FROM products WHERE product_title LIKE concat('%', ?, '%') OR product_content LIKE concat('%', ?, '%') ORDER BY createdAt DESC";
 
   const searchList = [];
-  connection.query(query, [keyword], (err, result) => {
+  connection.query(query, [keyword, keyword], (err, result) => {
     if (err) {
       return res.send(err);
     } else {
       for (let i = 0; i < result.length; i++) {
         searchList[i] = result[i];
       }
+      // 여기서 페이지를 같이 보내줘야 페이징이 되려나
       res.send(JSON.stringify(searchList));
     }
   });
-
-  // Product.findAll({
-  //   where: {
-  //     [Op.or]: [
-  //       {product_title: {
-  //           [Op.like]: '%' + keyword + '%'
-  //         }},
-  //       {product_content: {
-  //           [Op.like]: '%' + keyword + '%'
-  //         }}
-  //     ]
-  //   },
-  //   order: 'product_count DESC'
-  // }).then((products) => {
-  //   res.json({
-  //     data: products
-  //   });
-  // }).catch(err => {
-  //   console.error('err: ' + err);
-  //   res.send(err);
-  // });
 });
 
-// 상품 게시
+// 상품 게시 (get 으로 테스트했을 때 데이터 들어감)
 app.post('/post', function(req, res, next) {
   // TODO: member_id 는 세션에서 가져오기
-  const member_id = 'jyomi';
+  const member_id = 's2018w18';
   let member_name = '';
-
-  User.find({
-    where: {member_id: member_id}
-  }).then((user) => {
-    member_name = user.name
-  }).catch(err => {
-    console.error('err: ' + err);
-  });
 
   const title = req.body.title;
   const category = req.body.category;
@@ -222,46 +189,62 @@ app.post('/post', function(req, res, next) {
   const place = req.body.place;
   const swap = req.body.swap;
   const image = req.body.image;
+  // const title = 'strawberry milk';
+  // const category = 2;
+  // const price = 30000;
+  // const content = 'delicious strawberry ~';
+  // const status = 0;
+  // const place = '3-3';
+  // const swap = 0;
+  // const image = 'https://pds.joins.com/news/component/htmlphoto_mmdata/201502/04/htm_20150204185442c010c011.jpg';
 
-  Product.create({
-    member_id: member_id,
-    name: member_name,
-    product_title: title,
-    product_content: content,
-    category: category,
-    product_price: price,
-    product_status: status,
-    product_img: image,
-    product_place: place,
-    product_swap: swap
-  }).then((result) => {
-    res.json({
-      data: result
-    });
-  }).catch(err => {
-    console.error('err: ' + err);
-    res.send(err);
+  let query = 'SELECT name FROM members WHERE member_id = ?';
+
+  connection.query(query, [member_id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      member_name = result[0].name;
+
+      const values = [member_id, member_name, title, content, category, price, status, image, place, swap];
+
+      query = 'INSERT INTO products(member_id, name, product_title, product_content, category, product_price, ' +
+          'product_status, product_img, product_place, product_swap) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      connection.query(query, values, (err, result) => {
+        if (err) {
+          return res.send(err);
+        } else {
+          console.log('상품 등록 완료');
+          const product_id = result.insertId;
+          res.send(result.insertId);
+        }
+      });
+    }
   });
-
 });
 
-// 상품 자세히 보기
+// 상품 자세히 보기 (끝)
 app.get('/detail/:id', function (req, res, next) {
-  var id = req.params.product_id;
+  let id = req.params.id;
+  id *= 1;
 
-  Product.findOne({
-    where: {product_id: id}
-  }).then((product) => {
-    res.json({
-      data: product
-    });
-  }).catch(err => {
-    console.error('err: ' + err);
+  const query = 'SELECT * FROM products WHERE id = ?';
+
+  const productList = [];
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        productList[i] = result[i];
+      }
+      res.send(productList);
+    }
   });
 });
 
 app.listen(5000, () => {
-  console.log('5000 포트로 연결됨 ??');
+  console.log('5000 포트로 연결됨');
 });
 
 // view engine setup
