@@ -16,6 +16,7 @@
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+    "passport-google-oauth": "^2.0.0",
     "sequelize": "^5.21.10"
   },
   "main": "app.js",

@@ -1,32 +1,28 @@
-// module.exports = (function() {
-//     return {
-//         local: {
-//             host: 'localhost',
-//             port: '3306',
-//             user: 'root',
-//             password: 'mirim2',
-//             database: 'mijang'
-//         },
-//         real: {
-//             host: '',
-//             port: '',
-//             user: '',
-//             password: '',
-//             database: ''
-//         },
-//         staging: {
-//             host: '',
-//             port: '',
-//             user: '',
-//             password: '',
-//             database: ''
-//         },
-//         dev: {
-//             host: '',
-//             port: '',
-//             user: '',
-//             password: '',
-//             database: ''
-//         }
-//     }
-// })();
+module.exports = (function() {
+    return {
+        local: {
+            host: '52.14.5.225',
+            user: 'mirim_jangteo',
+            password: 'mirim123789jangteo',
+            database: 'mirim_jangteo'
+        },
+        real: {
+            host: '52.14.5.225',
+            user: 'mirim_jangteo',
+            password: 'mirim123789jangteo',
+            database: 'mirim_jangteo'
+        },
+        staging: {
+            host: '52.14.5.225',
+            user: 'mirim_jangteo',
+            password: 'mirim123789jangteo',
+            database: 'mirim_jangteo'
+        },
+        dev: {
+            host: '52.14.5.225',
+            user: 'mirim_jangteo',
+            password: 'mirim123789jangteo',
+            database: 'mirim_jangteo'
+        }
+    }
+})();
