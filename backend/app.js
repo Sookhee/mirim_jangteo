@@ -20,8 +20,8 @@ connection.connect(err => {
   }
 });
 
-// const session = require('express-session');
-//
+const session = require('express-session');
+
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 // const storeRouter = require('./routes/store');
@@ -33,81 +33,77 @@ const app = express();
 
 app.use(cors());
 
-const sequelize = require('sequelize');
-const Op = sequelize.Op;
-
-var {User} = require('./models');
-var {Sale} = require('./models');
-var {Product} = require('./models');
-var {Like} = require('./models');
-var {Banner} = require('./models');
-
-
+// const sequelize = require('sequelize');
+// const Op = sequelize.Op;
 //
-// // 마이페이지 정보 가져오기
-// app.get('/mypage/:id', function(req, res, next) {
-//   // TODO: member_id 는 세션에서 가져오기
-//   var member_id = 'jyomi';
-//
-//   User.findOne({
-//     where: {member_id: member_id}
-//   }).then((user) => {
-//     res.json({
-//       name: user.name,
-//       phone: user.phone
-//     });
-//   }).catch(err => {
-//     console.error('err: ' + err);
-//   });
-//
-// });
-//
-// // 내 판매 상품
-// app.get('/myproduct', function(req, res, next) {
-//   // TODO: member_id 세션에서 가져오기
-//   var member_id = 'jyomi';
-//   Product.findAll({
-//     where: {
-//       member_id: id
-//     },
-//     order: 'createdAt DESC',
-//     limit: 8
-//   }).then((products) => {
-//     res.json({
-//       id: products.product_id,
-//       title: products.product_title,
-//       seller: products.name,
-//       price: products.product_price,
-//       image: products.product_img
-//     });
-//   }).catch((err) => {
-//     console.error('err: ' + err);
-//   });
-// });
-//
-// // 찜한 상품
-// app.get('/like', function(req, res, next) {
-//   // TODO: member_id 세션에서 가져오기
-//   var member_id = 'jyomi';
-//
-//   const query = 'SELECT p.id, p.name, p.product_title, p.product_content, p.product_price FROM products AS p ' +
-//       'JOIN like_lists AS l ON (p.id = l.product_id and l.member_id = :member_id';
-//
-//   models.sequelize.query(
-//       query,
-//       {
-//         replacements: { member_id: 'member_id' },
-//         type: QueryTypes.SELECT
-//       }
-//   ).then((result) => {
-//     res.json(result);
-//   }).catch( err => {
-//     console.error('err: ' + err);
-//   });
-//
-// });
+// var {User} = require('./models');
+// var {Sale} = require('./models');
+// var {Product} = require('./models');
+// var {Like} = require('./models');
+// var {Banner} = require('./models');
 
 
+
+// 마이페이지 정보 가져오기
+app.get('/mypage/:id', function(req, res, next) {
+  // TODO: member_id 는 세션에서 가져오기
+  const member_id = req.params.id;
+
+  const memberInfo = [];
+
+  const query = 'SELECT * FROM members WHERE member_id = ?';
+  connection.query(query, [member_id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      if (result === [])
+        console.log('값이 없습니다.');
+      for (let i = 0; i < result.length; i++) {
+        memberInfo[i] = result[i];
+      }
+      res.send(memberInfo);
+    }
+  });
+});
+
+// 내 판매 상품
+app.get('/myproduct/:member_id', function(req, res, next) {
+  // TODO: member_id 세션에서 가져오기
+  var member_id = 's2018w18';
+
+  const productList = [];
+  const query = 'SELECT * FROM products WHERE member_id = ? ORDER BY createdAt DESC';
+  connection.query(query, [member_id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        productList[i] = result[i];
+      }
+      res.send(productList);
+    }
+  });
+});
+
+// 찜한 상품
+app.get('/like/:member_id', function(req, res, next) {
+  // TODO: member_id 세션에서 가져오기
+  var member_id = 's2018w01';
+
+  const likeList = [];
+  const query = 'SELECT p.id, p.name, p.product_title, p.product_content, p.product_price FROM products AS p ' +
+      'JOIN like_lists AS l ON (p.id = l.product_id and l.member_id = ?)';
+  connection.query(query, [member_id], (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        likeList[i] = result[i];
+      }
+      res.send(likeList);
+    }
+  });
+});
 
 
 // 카테고리별 인기있는 상품 8개 (끝)
