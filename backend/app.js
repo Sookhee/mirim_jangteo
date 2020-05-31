@@ -101,6 +101,7 @@ app.get('/like/:member_id', function(req, res, next) {
       for (let i = 0; i < result.length; i++) {
         likeList[i] = result[i];
       }
+      likeList.push({length: result.length});
       res.send(likeList);
     }
   });
