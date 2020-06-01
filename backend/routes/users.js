@@ -13,7 +13,51 @@ const connection = mysql_odbc.init();
 // // const crypto = require('crypto');
 
 
+router.post('/login', function(req, res, next) {
+    const {member_id, pwd} = query;
 
+    let query = "SELECT pwd FROM members WHERE member_id = ?";
+    connection.query(query, [member_id], (err, result) => {
+        if (err) {
+            console.log('아이디 잘못 입력');
+            return res.send(err);
+        } else {
+            const dbPwd = result[0];
+            if (pwd === dbPwd) {
+                console.log('로그인 완료');
+                req.session.logined = true;
+                req.session.id = member_id;
+                console.log(req.sessionId);
+                res.send({id: req.session.id});
+            }
+        }
+    });
+});
+
+router.get('/logout', function(req, res, next) {
+  req.session.destroy();
+  res.clearCookie('sid');
+
+  res.redirect('/users/login');
+});
+
+router.post('/join', async function(req, res, next) {
+    const {member_id, pwd, name, phone} = query;
+
+    // crypto...
+    // let salt = Math.round(new Date().valueOf() * Math.random()) + "";
+    // let hashPassword = crypto.createHash('sha512').update(pwd + salt).digest('hex');
+    let values = [member_id, pwd, name, phone];
+    let query = "INSERT INTO members VALUES(?, ?, ?, ?, NOW(), NOW())";
+    connection.query(query, values, (err, result) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            res.send(result.insertId);
+        }
+    });
+
+});
 
 
 
@@ -162,30 +206,7 @@ router.get('/like/:member_id', function(req, res, next) {
 //   res.render('users/signup');
 // });
 //
-// router.post('/sign-up', async function(req, res, next) {
-//   // let body = req.body;
-//   //
-//   // let inputPassword = body.password;
-//   // let result = models.user.create({
-//   //   name: body.userName,
-//   //   email: body.userEmail,
-//   //   password: inputPassword
-//   // });
-//
-//   // 암호화
-//   // let salt = Math.round(new Date().valueOf() * Math.random()) + "";
-//   // let hashPassword = crypto.createHash('sha512').update(inputPassword + salt).digest("hex");
-//   // let result = models.user.create({
-//   //   name: body.userName,
-//   //   email: body.userEmail,
-//   //   password: hashPassword,
-//   //   salt: salt
-//   // });
-//
-//   res.redirect('/users/sign-up')
-//
-// });
-//
+
 // router.get('/sign-in', function(req, res, next) {
 //   let session = req.session;
 //

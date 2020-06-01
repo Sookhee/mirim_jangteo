@@ -7,26 +7,13 @@ const logger = require('morgan');
 const cors = require('cors');
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  host: '52.14.5.225',
-  user: 'mirim_jangteo',
-  password: 'mirim123789jangteo',
-  database: 'mirim_jangteo'
-});
-
-connection.connect(err => {
-  if(err) {
-    return err;
-  }
-});
-
 const session = require('express-session');
 
 // const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const storeRouter = require('./routes/store');
 
-const models = require('./models/index');
+// const models = require('./models/index');
 // var sequelize = require('./models').sequelize;
 
 const app = express();
@@ -66,12 +53,12 @@ app.use(function(req, res, next) {
 app.use('/users', usersRouter);
 app.use('/store', storeRouter);
 
-models.sequelize.sync().then( () => {
-  console.log(' DB 연결 성공 ');
-}).catch(err => {
-  console.log(' DB 연결 실패 ');
-  console.log(err);
-});
+// models.sequelize.sync().then( () => {
+//   console.log(' DB 연결 성공 ');
+// }).catch(err => {
+//   console.log(' DB 연결 실패 ');
+//   console.log(err);
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -88,15 +75,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-//
-// app.use(session({
-//   key: 'sid',
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//     maxAge: 24000 * 60 * 60
-//   }
-// }));
+
+app.use(cookieParser('secret code'));
+app.use(session({
+  key: 'sid',
+  secret: 'secret code',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  }
+}));
 
 module.exports = app;
