@@ -1,8 +1,25 @@
-import React, {  } from "react";
+import React, { useState } from "react";
 import {NavLink} from 'react-router-dom';
 import "../style/post.scss";
 
 const Post = () => {
+
+    const [title, setTitle] = useState('')
+    const [category, setCategory] = useState('')
+    const [price, setPrice] = useState('')
+    const [content, setContent] = useState('')
+    const [status, setStatus] = useState('')
+    const [place, setPlace] = useState('')
+    const [swap, setSwap] = useState('')
+    const [img, setImg] = useState('https://images.unsplash.com/photo-1503455637927-730bce8583c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')
+    
+    const submitProductData = () => {
+        fetch(`http://localhost:5000/store/post?title=${title}&category=${category}&price=${price}&content=${content}&status=${status}&place=${place}&swap=${swap}&img=${img}`)
+        .then(alert('상품 등록에 성공했습니다'))
+        .catch( err => console.log(err))
+    }
+
+
     return (
         <div className="post">
             <div className="post-banner">
@@ -29,50 +46,50 @@ const Post = () => {
                 </details>
             </div>
             <div className="post-form-wrap">
-                <form>
+                <form onSubmit={submitProductData}>
                     <div className="question">상품명</div>
-                    <div className="wrap-input"><input type="text"/></div>
+                    <div className="wrap-input"><input type="text" onChange={e => {setTitle(e.target.value)}}/></div>
 
                     <div className="question">카테고리</div>
                     <div className="wrap-input">
-                        <input type='radio' value='0' name='category' id='cate0'/>
+                        <input type='radio' value='0' name='category' id='cate0' onClick={e => {setCategory(e.target.value)}}/>
                         <label htmlFor='cate0'><div className="wrap-label">식품건강</div></label>
-                        <input type='radio' value='1' name='category' id='cate1'/>
+                        <input type='radio' value='1' name='category' id='cate1' onClick={e => {setCategory(e.target.value)}}/>
                         <label htmlFor='cate1'><div className="wrap-label">패션의류</div></label>
-                        <input type='radio' value='2' name='category' id='cate2'/>
+                        <input type='radio' value='2' name='category' id='cate2' onClick={e => {setCategory(e.target.value)}}/>
                         <label htmlFor='cate2'><div className="wrap-label">디지털</div></label>
-                        <input type='radio' value='3' name='category' id='cate3'/>
+                        <input type='radio' value='3' name='category' id='cate3' onClick={e => {setCategory(e.target.value)}}/>
                         <label htmlFor='cate3'><div className="wrap-label">문화예술</div></label>
-                        <input type='radio' value='4' name='category' id='cate4'/>
+                        <input type='radio' value='4' name='category' id='cate4' onClick={e => {setCategory(e.target.value)}}/>
                         <label htmlFor='cate4'><div className="wrap-label">생활문구</div></label>
-                        <input type='radio' value='5' name='category' id='cate5'/>
+                        <input type='radio' value='5' name='category' id='cate5' onClick={e => {setCategory(e.target.value)}}/>
                         <label htmlFor='cate5'><div className="wrap-label">기타</div></label>
                     </div>
 
                     <div className="question">가격</div>
-                    <div className="wrap-input"><input type="number" min="0" max="100000"/></div>
+                    <div className="wrap-input"><input type="number" min="0" max="100000" onChange={e => {setPrice(e.target.value)}}/></div>
 
                     <div className="question">상품 설명</div>
-                    <div className="wrap-input"><textarea></textarea></div>
+                    <div className="wrap-input"><textarea onChange={e => {setContent(e.target.value)}}></textarea></div>
 
                     <div className="question">상품 상태</div>
                     <div className="wrap-input">
-                    <input type='radio' value='0' name='stat' id='stat1'/>
+                    <input type='radio' value='0' name='stat' id='stat1' onClick={e => {setStatus(e.target.value)}}/>
                         <label htmlFor='stat1'><div className="wrap-label">새 상품</div></label>
-                        <input type='radio' value='1' name='stat' id='stat2'/>
+                        <input type='radio' value='1' name='stat' id='stat2' onClick={e => {setStatus(e.target.value)}}/>
                         <label htmlFor='stat2'><div className="wrap-label">거의 새 상품</div></label>
-                        <input type='radio' value='2' name='stat' id='stat3'/>
+                        <input type='radio' value='2' name='stat' id='stat3' onClick={e => {setStatus(e.target.value)}}/>
                         <label htmlFor='stat3'><div className="wrap-label">중고</div></label>
                     </div>
 
                     <div className="question">거래 장소</div>
-                    <div className="wrap-input"><input type="text"/></div>
+                    <div className="wrap-input"><input type="text" onChange={e => {setPlace(e.target.value)}}/></div>
 
                     <div className="question">교환 여부</div>
                     <div className="wrap-input">
-                        <input type='radio' value='0' name='category' id='change1'/>
+                        <input type='radio' value='0' name='change' id='change1' onClick={e => {setSwap(e.target.value)}}/>
                         <label htmlFor='change1'><div className="wrap-label">가능</div></label>
-                        <input type='radio' value='1' name='category' id='change2'/>
+                        <input type='radio' value='1' name='change' id='change2' onClick={e => {setSwap(e.target.value)}}/>
                         <label htmlFor='change2'><div className="wrap-label">불가능</div></label>
                     </div>
 

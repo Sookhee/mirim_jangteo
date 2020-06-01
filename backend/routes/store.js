@@ -78,28 +78,15 @@ router.get('/search/:keyword/:order/:page', function(req, res, next) {
     });
 });
 
+
 // 상품 게시 (get 으로 테스트했을 때 데이터 들어감)
-router.post('/post', function(req, res, next) {
+router.get('/post', function(req, res, next) {
     // TODO: member_id 는 세션에서 가져오기
     const member_id = 's2018w18';
     let member_name = '';
 
-    const title = req.body.title;
-    const category = req.body.category;
-    const price = req.body.price;
-    const content = req.body.content;
-    const status = req.body.status;
-    const place = req.body.place;
-    const swap = req.body.swap;
-    const image = req.body.image;
-    // const title = 'strawberry milk';
-    // const category = 2;
-    // const price = 30000;
-    // const content = 'delicious strawberry ~';
-    // const status = 0;
-    // const place = '3-3';
-    // const swap = 0;
-    // const image = 'https://pds.joins.com/news/component/htmlphoto_mmdata/201502/04/htm_20150204185442c010c011.jpg';
+    const{ title, category, price, content, status, place, swap } = req.query
+    const image = 'https://pds.joins.com/news/component/htmlphoto_mmdata/201502/04/htm_20150204185442c010c011.jpg';
 
     let query = 'SELECT name FROM members WHERE member_id = ?';
 
@@ -111,15 +98,17 @@ router.post('/post', function(req, res, next) {
 
             const values = [member_id, member_name, title, content, category, price, status, image, place, swap];
 
-            query = 'INSERT INTO products(member_id, name, product_title, product_content, category, product_price, ' +
-                'product_status, product_img, product_place, product_swap) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            query = `INSERT INTO products(member_id, name, product_title, product_content, category, product_price, 
+                product_status, product_img, product_place, product_swap) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
             connection.query(query, values, (err, result) => {
                 if (err) {
+                    console.log('에러');
                     return res.send(err);
                 } else {
                     console.log('상품 등록 완료');
                     const product_id = result.insertId;
-                    res.send(result.insertId);
+                    console.log(product_id);
+                    res.send('' + product_id);
                 }
             });
         }
@@ -138,10 +127,26 @@ router.get('/detail/:id', function (req, res, next) {
         if (err) {
             return res.send(err);
         } else {
-            for (let i = 0; i < result.length; i++) {
-                productList[i] = result[i];
-            }
-            res.send(productList);
+            const strJSON = JSON.stringify({
+                id: id,
+                member_id: result[0].member_id,
+                name: result[0].name,
+                product_title: result[0].product_title,
+                product_content: result[0].product_content,
+                category: result[0].category,
+                product_price: result[0].product_price,
+                product_status: result[0].product_status,
+                product_deal_status: result[0].product_deal_status,
+                product_img: result[0].product_img,
+                product_swap: result[0].product_swap,
+                createdAt: result[0].createdAt,
+                updatedAt: result[0].updatedAt
+            })
+            res.send(strJSON)
+            // for (let i = 0; i < result.length; i++) {
+            //     productList[i] = result[i];
+            // }
+            // res.send(productList);
         }
     });
 });

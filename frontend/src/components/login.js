@@ -24,7 +24,9 @@ class Login extends Component {
                             <input type="password"
                             placeholder="비밀번호"/>
                         </div>
-                        <button className="login-btn">로그인</button>
+                        <NavLink to="/">
+                            <button className="login-btn">로그인</button>
+                        </NavLink>
                     </form>
                     <div className="wrap-link">
                         아직 미림 장터의 회원이 아니신가요?

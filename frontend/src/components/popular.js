@@ -14,7 +14,7 @@ class PopularList extends Component {
     state = {
         productData: [],
         cateData: '0',
-        isChecked: [true, false, false, false, false, false, false]
+        isChecked: [true, false, false, false, false, false, false],
     }
 
     cateBannerData = {
@@ -35,8 +35,10 @@ class PopularList extends Component {
     setCategory5 = () => {this.setState({ ...this.state.productData, cateData: '5', isChecked: [false, false, false, false, false, true, false] });}
     setCategory6 = () => {this.setState({ ...this.state.productData, cateData: '6', isChecked: [false, false, false, false, false, false, true] });}
 
+
+
     getProductData = () => {
-        fetch('http://localhost:5000/popular')
+        fetch(`http://localhost:5000/store/popular/${this.state.cateData}`)
         .then(response => response.json())
         .then(response => this.setState({productData: response}))
         .catch(err => console.log(err))

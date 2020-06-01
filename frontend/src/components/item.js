@@ -11,7 +11,6 @@ class Item extends Component {
     render() {
         return (
             <div className="item">
-                {console.log(this.props.prod_id)}
                 <NavLink to={"/product/" + this.props.prod_id}>
                     <img src={this.props.prod_img} className="img"></img>
                     <div className="wrap-content">
