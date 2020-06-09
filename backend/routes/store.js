@@ -64,6 +64,7 @@ router.get('/search/:keyword/:order/:page', function(req, res, next) {
         query = "SELECT * FROM products WHERE product_title LIKE concat('%', ?, '%') OR product_content LIKE concat('%', ?, '%') ORDER BY createdAt DESC";
 
     const searchList = [];
+    let searchLists = [];
     connection.query(query, [keyword, keyword], (err, result) => {
         if (err) {
             return res.send(err);
@@ -71,13 +72,14 @@ router.get('/search/:keyword/:order/:page', function(req, res, next) {
             for (let i = 0; i < result.length; i++) {
                 searchList[i] = result[i];
             }
-            searchList.push({length: result.length});
-            // 여기서 페이지를 같이 보내줘야 페이징이 되려나
-            res.send(JSON.stringify(searchList));
+            searchLists = {
+                data: searchList,
+                length: result.length
+            };
+            res.send(JSON.stringify(searchLists));
         }
     });
 });
-
 
 // 상품 게시 (get 으로 테스트했을 때 데이터 들어감)
 router.get('/post', function(req, res, next) {
@@ -120,13 +122,24 @@ router.get('/detail/:id', function (req, res, next) {
     let id = req.params.id;
     id *= 1;
 
-    const query = 'SELECT * FROM products WHERE id = ?';
+    let query = 'SELECT * FROM products WHERE id = ?';
 
     const productList = [];
     connection.query(query, [id], (err, result) => {
         if (err) {
             return res.send(err);
         } else {
+            let like = 0;
+            query = "SELECT id FROM like_lists WHERE member_id = ? AND product_id = ?";
+            connection.query(query, [result[0].member_id, result[0].id], (err, result2) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    if (result2) {
+                        like = 1;
+                    }
+                }
+            });
             const strJSON = JSON.stringify({
                 id: id,
                 member_id: result[0].member_id,
@@ -140,13 +153,12 @@ router.get('/detail/:id', function (req, res, next) {
                 product_img: result[0].product_img,
                 product_swap: result[0].product_swap,
                 createdAt: result[0].createdAt,
-                updatedAt: result[0].updatedAt
-            })
-            res.send(strJSON)
-            // for (let i = 0; i < result.length; i++) {
-            //     productList[i] = result[i];
-            // }
-            // res.send(productList);
+                updatedAt: result[0].updatedAt,
+                like: like
+            });
+            console.log(strJSON);
+            // productList.push(strJSON);
+            res.send(strJSON);
         }
     });
 });
