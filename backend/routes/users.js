@@ -89,6 +89,7 @@ router.get('/myproduct/:member_id', function(req, res, next) {
     var member_id = 's2018w18';
 
     const productList = [];
+    let productLists = [];
     const query = 'SELECT * FROM products WHERE member_id = ? ORDER BY createdAt DESC';
     connection.query(query, [member_id], (err, result) => {
         if (err) {
@@ -97,8 +98,11 @@ router.get('/myproduct/:member_id', function(req, res, next) {
             for (let i = 0; i < result.length; i++) {
                 productList[i] = result[i];
             }
-            productList.push({length: result.length});
-            res.send(productList);
+            productLists = {
+                data: productList,
+                length: result.length
+            };
+            res.send(productLists);
         }
     });
 });
@@ -109,7 +113,8 @@ router.get('/like/:member_id', function(req, res, next) {
     var member_id = 's2018w01';
 
     const likeList = [];
-    const query = 'SELECT p.id, p.name, p.product_title, p.product_content, p.product_price FROM products AS p ' +
+    let likeLists = [];
+    const query = 'SELECT p.id, p.name, p.product_title, p.product_content, p.product_price, p.product_img FROM products AS p ' +
         'JOIN like_lists AS l ON (p.id = l.product_id and l.member_id = ?)';
     connection.query(query, [member_id], (err, result) => {
         if (err) {
@@ -118,8 +123,11 @@ router.get('/like/:member_id', function(req, res, next) {
             for (let i = 0; i < result.length; i++) {
                 likeList[i] = result[i];
             }
-            likeList.push({length: result.length});
-            res.send(likeList);
+            likeLists = {
+                data: likeList,
+                length: result.length
+            };
+            res.send(likeLists);
         }
     });
 });
