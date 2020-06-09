@@ -163,6 +163,45 @@ router.get('/detail/:id', function (req, res, next) {
     });
 });
 
+// 찜 추가하기
+router.get('/click_like/:id', function(req, res, next) {
+    // TODO: member_id 세션에서 가져오기
+    const member_id = 's2018w01';
+    const id = req.params.id;
+
+    const likeList = [];
+    let query = 'SELECT id FROM like_lists WHERE member_id = ? AND product_id = ?';
+    connection.query(query, [member_id, id], (err, result) => {
+        if (err) {
+            return res.send(err);
+        } else {
+            if (result) {
+                // 이미 존재할 때
+                query = 'DELETE FROM like_lists WHERE id = ?';
+                connection.query(query, [result], (err, result2) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        console.log('찜 취소');
+                    }
+                });
+            } else {
+                // 존재하지 않을 때
+                query = 'INSERT INTO like_lists(member_id, product_id, createdAt, updatedAt) VALUES(?, ?, now(), now())';
+                connection.query(query, [member_id, id], (err, result3) => {
+                   if (err) {
+                       console.error(err);
+                   } else {
+                       console.log(result3);
+                       console.log('찜 완료');
+                   }
+                });
+            }
+        }
+    });
+});
+
+
 //
 // // 카테고리별 인기있는 상품 8개
 // router.get('/popular/:category', function(req, res, next) {
