@@ -64,6 +64,7 @@ router.get('/search/:keyword/:order/:page', function(req, res, next) {
         query = "SELECT * FROM products WHERE product_title LIKE concat('%', ?, '%') OR product_content LIKE concat('%', ?, '%') ORDER BY createdAt DESC";
 
     const searchList = [];
+    let searchLists = [];
     connection.query(query, [keyword, keyword], (err, result) => {
         if (err) {
             return res.send(err);
@@ -71,9 +72,11 @@ router.get('/search/:keyword/:order/:page', function(req, res, next) {
             for (let i = 0; i < result.length; i++) {
                 searchList[i] = result[i];
             }
-            searchList.push({length: result.length});
-            // 여기서 페이지를 같이 보내줘야 페이징이 되려나
-            res.send(JSON.stringify(searchList));
+            searchLists = {
+                data: searchList,
+                length: result.length
+            };
+            res.send(JSON.stringify(searchLists));
         }
     });
 });
