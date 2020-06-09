@@ -12,20 +12,29 @@ const connection = mysql_odbc.init();
 // var {Like} = require('../models');
 // var {Banner} = require('../models');
 
-// 카테고리별 인기있는 상품 8개 (끝)
-router.get('/popular/:category', (req, res) => {
-    const category = req.params.category;
-    const query = 'SELECT * FROM products WHERE product_deal_status = 0 AND category = ? ORDER BY product_count DESC LIMIT 10';
-
+// 카테고리별 인기있는 상품 10개 (끝)
+router.get('/popular', (req, res) => {
     const productList = [];
-    connection.query(query, [category], (err, result) => {
+    let productLists = {
+        '0': [],
+        '1': [],
+        '2': [],
+        '3': [],
+        '4': [],
+        '5': [],
+        '6': [],
+        '7': [],
+    };
+    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 10';
+    connection.query(query, (err, result) => {
         if (err) {
             return res.send(err);
         } else {
-            for(let i = 0; i < result.length; i++){
-                productList[i] = result[i];
+            for (let i = 0; i < result.length; i++) {
+                productLists[0].push(result[i]);
+                productLists[result[i].category + 1].push(result[i]);
             }
-            res.send(JSON.stringify(productList))
+            res.send(JSON.stringify(productLists));
         }
     });
 });
