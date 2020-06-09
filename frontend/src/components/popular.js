@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {NavLink} from "react-router-dom";
 import "../style/popular.scss";
 import Item from './item';
 import cateBanner1 from "../img/cate-banner1.png";

@@ -28,7 +28,7 @@
     }
 
     .detail-mid{
-        width: 800px;
+        width: 900px;
         margin: 40px auto 0;
         a{color: #000000; text-decoration: none;}
         .goback{
@@ -48,7 +48,7 @@
         min-height: 20vh;
         padding: 20px 0 150px;
         .wrap-form{
-            width: 800px;
+            width: 900px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
@@ -110,16 +110,31 @@
 }
 
 .wrap-info{
-    width: 400px;
+    width: 500px;
     background: #F7F8FA;
     box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0,0,0,.15);
     border: 1px solid #CED0DA;
     box-sizing: border-box;
     padding: 14px 0;
     margin-bottom: 70px;
+    .wrap-item-out{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .item-profile{
+            width: 120px;
+            height: 120px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            margin: 6px 20px;
+            box-shadow: 0 0.0625rem 0.1875rem 0.11rem rgba(0,0,0,.15);
+        }
+    }
     .wrap-item{
         width: 100%;
         display: flex;
+        
         div{
             line-height: 30px;
             color: #494E5F;
@@ -131,20 +146,25 @@
             padding-left: 14px;
             font-weight: 500;
         }
+        .item-title-seller{
+            width: 60px;
+            height: 30px;
+            padding-left: 14px;
+            font-weight: 500;
+        }
+
         .item-cont{
-            width: 300px;
+            width: 400px;
             padding-right: 14px;
             box-sizing: border-box;
         }
-        .item-profile{
-            width: 120px;
-            height: 120px;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border-radius: 50%;
-            margin: 6px 20px;
-            box-shadow: 0 0.0625rem 0.1875rem 0.11rem rgba(0,0,0,.15);
+
+        .item-cont-seller{
+            width: 200px;
+            padding-right: 14px;
+            box-sizing: border-box;
         }
+        
 
         .seller-info{
             margin-top: 10px;

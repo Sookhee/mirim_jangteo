@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {NavLink} from "react-router-dom";
 import '../style/falseFooter.scss';
 
 export default class FalseFooter extends Component {
