@@ -119,6 +119,8 @@ router.get('/post', function(req, res, next) {
 
 // 상품 자세히 보기 (끝)
 router.get('/detail/:id', function (req, res, next) {
+    // let member_id 세션에서 받아오기
+    let member_id = "s2018w01";
     let id = req.params.id;
     id *= 1;
 
@@ -131,7 +133,7 @@ router.get('/detail/:id', function (req, res, next) {
         } else {
             let like = 0;
             query = "SELECT id FROM like_lists WHERE member_id = ? AND product_id = ?";
-            connection.query(query, [result[0].member_id, result[0].id], (err, result2) => {
+            connection.query(query, [member_id, result[0].id], (err, result2) => {
                 if (err) {
                     console.error(err);
                 } else {
