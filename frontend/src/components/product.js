@@ -4,11 +4,19 @@ import Item from "./item";
 
 class ProductList extends Component {
     state = {
-        productData: []
+        productData: [],
+        keyword: ''
+    }
+
+
+    setSearchKeyword = () => {
+        this.setState({
+            keyword: 'sd'
+        })
     }
 
     getProductData = () => {
-        fetch('http://localhost:5000/popular')
+        fetch('http://localhost:5000/store/popular/0')
         .then(response => response.json())
         .then(response => this.setState({productData: response}))
         .catch(err => console.log(err))
@@ -19,13 +27,13 @@ class ProductList extends Component {
       }
 
     render() {
-
         const {match} = this.props;
+
         return (
-            <div className="product">
-                <div className="product-info">
-                    <div className="wrap-info">
-                    '{match.params.keyword}'에 대한 모든 검색 결과 <span>({42})</span>
+            <div className="product-wrap">
+                <div className="product-wrap-info">
+                    <div className="product-wrap-result">
+                    '{match.params.keyword}'에 대한 모든 검색 결과 <span>({0})</span>
                     </div>
                 </div>
                 <div className="wrap-product">

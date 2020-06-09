@@ -55,9 +55,9 @@ class Nav extends Component {
                             </form>
                         </div>
                         <div className="nav-item-wrap wrap-menu">
-                            <NavLink to={"/post"} className="in-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
-                            <NavLink to={"/mypage/" + this.context.userId} className="in-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
-                            <NavLink to={"/mirim-talk"} className="in-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
+                            <NavLink to={"/post"} className="in-nav-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
+                            <NavLink to={"/mypage/" + this.context.userId} className="in-nav-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
+                            <NavLink to={"/mirim-talk"} className="in-nav-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
                         </div>
                     </div>
                 </div>

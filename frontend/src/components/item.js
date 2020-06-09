@@ -12,7 +12,7 @@ class Item extends Component {
         return (
             <div className="item">
                 <NavLink to={"/product/" + this.props.prod_id}>
-                    <img src={this.props.prod_img} className="img"></img>
+                    <div className="img" style={{backgroundImage: `url(${this.props.prod_img})`}}></div>
                     <div className="wrap-content">
                         <div className="title">{this.props.prod_title}</div>
                         <div className="seller">{this.props.prod_seller}</div>

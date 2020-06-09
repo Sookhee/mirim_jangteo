@@ -38,18 +38,18 @@
         margin: 0 auto;
 
         .category-intro{
-            width: 400px;
-            height: 260px;
-            margin: 0 20px 30px 0;
+            width: 420px;
+            height: 256px;
+            margin: 0 0 20px 0;
             float: left;
             box-shadow: 0.5px 0.5px 3px 0 rgba(0,0,0,0.2);
 
             .cate-intro-img{
-                width: 400px;
-                height: 260px;
+                width: 420px;
+                height: 256px;
                 border-radius: 4px;
+                background-size: contain;
                 background-repeat: no-repeat;
-                background-image: url('../img/cate-banner1.png')
             }
         }
     }

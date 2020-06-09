@@ -8,8 +8,8 @@
             display: flex;
             justify-content: space-between;
 
-            .in-item{
-                margin-left: 10px;
+            .in-nav-item{
+                margin-left: 20px;
             }
 
             .nav-item-wrap{
@@ -69,7 +69,8 @@
         box-shadow: 0 1px 0 0 #e7e8ef;
         a{
             display: inline-block;
-            padding: 0 3px;
+            margin: 0 0 0 8px;
+            padding: 1px 5px;
             border-radius: 3px;
             text-decoration: none;
             color: #6c738a;
