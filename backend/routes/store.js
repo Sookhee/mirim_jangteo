@@ -163,7 +163,7 @@ router.get('/detail/:id', function (req, res, next) {
     });
 });
 
-// 찜 추가하기
+// 찜 추가, 취소하기
 router.get('/click_like/:id', function(req, res, next) {
     // TODO: member_id 세션에서 가져오기
     const member_id = 's2018w01';
@@ -175,14 +175,19 @@ router.get('/click_like/:id', function(req, res, next) {
         if (err) {
             return res.send(err);
         } else {
-            if (result) {
+            if (result.length > 0) {
                 // 이미 존재할 때
                 query = 'DELETE FROM like_lists WHERE id = ?';
-                connection.query(query, [result], (err, result2) => {
+                connection.query(query, [result[0].id], (err, result2) => {
                     if (err) {
                         console.error(err);
+                        return res.send(err);
                     } else {
-                        console.log('찜 취소');
+                        res.send({
+                            success: 1,
+                            delete: 1,
+                            insert: 0
+                        });
                     }
                 });
             } else {
@@ -191,9 +196,13 @@ router.get('/click_like/:id', function(req, res, next) {
                 connection.query(query, [member_id, id], (err, result3) => {
                    if (err) {
                        console.error(err);
+                       return res.send(err);
                    } else {
-                       console.log(result3);
-                       console.log('찜 완료');
+                       res.send({
+                           success: 1,
+                           delete: 0,
+                           insert: 1
+                       });
                    }
                 });
             }
