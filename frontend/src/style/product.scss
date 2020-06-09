@@ -4,13 +4,23 @@
     background: #F1F3F6;
 
     .product-wrap-info{
-        width: 1000px;
+        width: 1100px;
         margin: 0 auto;
         .product-wrap-result{
             font-size: 1.1em;
             font-weight: 500;
+            margin-bottom: 30px;
             padding: 20px 0 0 0;
             span{color: #609ae9;}
+        }
+    }
+
+    .wrap-product{
+        width: 1100px;
+        margin: 0 auto ;
+
+        .item{
+            margin: 0 20px 20px 0;
         }
     }
 
@@ -23,6 +33,7 @@
         clear: both;
         width: 1300px;
         margin: 0 auto;
+        padding: 50px 0;
         text-align: center;
         &:hover{
             cursor: pointer;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 import {Provider} from './Context';
 
 import Nav from "./components/nav";
@@ -9,6 +9,7 @@ import Home from "./components/home";
 import Product from "./components/product";
 import Post from "./components/post";
 import Mypage from "./components/mypage";
+import Notice from "./components/notice";
 import Detail from './components/detail';
 import Footer from "./components/footer";
 import FalseFooter from "./components/falseFooter";
@@ -58,6 +59,7 @@ class App extends Component {
                 <Route path="/list" exact={true} component={Product}/>
                 <Route path="/post" component={Post}/>
                 <Route path="/mypage/:user_id" component={Mypage}/>
+                <Route path="/notice" component={Notice}/>
                 <Route path="/product/:prod_id" component={Detail}/>
               </div>
               <Footer/>
