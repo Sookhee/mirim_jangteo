@@ -13,7 +13,7 @@ import cateBanner7 from "../img/cate-banner7.png";
 class PopularList extends Component {
     state = {
         productData: [],
-        cateData: '0',
+        cateData: '1',
         isChecked: [true, false, false, false, false, false, false],
     }
 
@@ -27,13 +27,13 @@ class PopularList extends Component {
         '6': cateBanner7,
     }
 
-    setCategory0 = () => {this.setState({ ...this.state.productData, cateData: '0', isChecked: [true, false, false, false, false, false, false] });}
-    setCategory1 = () => {this.setState({ ...this.state.productData, cateData: '1', isChecked: [false, true, false, false, false, false, false] });}
-    setCategory2 = () => {this.setState({ ...this.state.productData, cateData: '2', isChecked: [false, false, true, false, false, false, false] });}
-    setCategory3 = () => {this.setState({ ...this.state.productData, cateData: '3', isChecked: [false, false, false, true, false, false, false] });}
-    setCategory4 = () => {this.setState({ ...this.state.productData, cateData: '4', isChecked: [false, false, false, false, true, false, false] });}
-    setCategory5 = () => {this.setState({ ...this.state.productData, cateData: '5', isChecked: [false, false, false, false, false, true, false] });}
-    setCategory6 = () => {this.setState({ ...this.state.productData, cateData: '6', isChecked: [false, false, false, false, false, false, true] });}
+    setCategory0 = () => {this.setState({ ...this.state.productData, cateData: '0', isChecked: [true, false, false, false, false, false, false] }); this.getProductData()}
+    setCategory1 = () => {this.setState({ ...this.state.productData, cateData: '1', isChecked: [false, true, false, false, false, false, false] }); this.getProductData()}
+    setCategory2 = () => {this.setState({ ...this.state.productData, cateData: '2', isChecked: [false, false, true, false, false, false, false] }); this.getProductData()}
+    setCategory3 = () => {this.setState({ ...this.state.productData, cateData: '3', isChecked: [false, false, false, true, false, false, false] }); this.getProductData()}
+    setCategory4 = () => {this.setState({ ...this.state.productData, cateData: '4', isChecked: [false, false, false, false, true, false, false] }); this.getProductData()}
+    setCategory5 = () => {this.setState({ ...this.state.productData, cateData: '5', isChecked: [false, false, false, false, false, true, false] }); this.getProductData()}
+    setCategory6 = () => {this.setState({ ...this.state.productData, cateData: '6', isChecked: [false, false, false, false, false, false, true] }); this.getProductData()}
 
 
 
@@ -85,7 +85,7 @@ class PopularList extends Component {
                 </div>
                 <div className="wrap-product">
                     <div className="category-intro">
-                        <img src={this.cateBannerData[this.state.cateData]} className="cate-intro-img"/>
+                        <div className="cate-intro-img" style={{backgroundImage: `url(${this.cateBannerData[this.state.cateData]})`}}></div>
                     </div>
                     {
                     this.state.productData.map((product, i) => {

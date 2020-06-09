@@ -15,7 +15,7 @@ const connection = mysql_odbc.init();
 // 카테고리별 인기있는 상품 8개 (끝)
 router.get('/popular/:category', (req, res) => {
     const category = req.params.category;
-    const query = 'SELECT * FROM products WHERE product_status = 0 AND category = ? ORDER BY product_count DESC LIMIT 8';
+    const query = 'SELECT * FROM products WHERE product_deal_status = 0 AND category = ? ORDER BY product_count DESC LIMIT 10';
 
     const productList = [];
     connection.query(query, [category], (err, result) => {
