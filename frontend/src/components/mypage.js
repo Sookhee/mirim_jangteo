@@ -29,6 +29,8 @@ const Mypage = ({match}) => {
     const [profile, setProfile] = useState([])
     const [sellingData, setSellingData] = useState([])
     const [pickData, setPickData] = useState([])
+    const [sellingLength, setSellingLength] = useState([])
+    const [pickLength, setPickLength] = useState([])
 
 
     useEffect(() => {
@@ -39,12 +41,22 @@ const Mypage = ({match}) => {
 
         fetch(`http://localhost:5000/users/myproduct/s2018w18`)
         .then(response => response.json())
-        .then(response => {setSellingData(response)})
+        .then(response => {setSellingData(response.data)})
         .catch(err => console.log(err))
 
         fetch(`http://localhost:5000/users/like/s2018w18`)
         .then(response => response.json())
-        .then(response => {setPickData(response)})
+        .then(response => {setPickData(response.data)})
+        .catch(err => console.log(err))
+
+        fetch(`http://localhost:5000/users/myproduct/s2018w18`)
+        .then(response => response.json())
+        .then(response => {setSellingLength(response.length)})
+        .catch(err => console.log(err))
+
+        fetch(`http://localhost:5000/users/like/s2018w18`)
+        .then(response => response.json())
+        .then(response => {setPickLength(response.length)})
         .catch(err => console.log(err))
     });
 
@@ -79,8 +91,8 @@ const Mypage = ({match}) => {
                 </div>
             </div>
             <div className="mypage-route">
-                <Route path={`/mypage/:user_id`} exact={true} component={() => <SellingProductInfo sellingData={sellingData}/>}/>
-                <Route path={`/mypage/:user_id/pick`} component={() => <PickedProductInfo pickData={pickData}/>}/>
+                <Route path={`/mypage/:user_id`} exact={true} component={() => <SellingProductInfo sellingData={sellingData} sellingLength={sellingLength}/>}/>
+                <Route path={`/mypage/:user_id/pick`} component={() => <PickedProductInfo pickData={pickData} pickLength={pickLength}/>}/>
             </div>
         </div>
     )
@@ -91,7 +103,7 @@ const SellingProductInfo = (props) => {
 
     return(
         <div className="selling-wrap">
-            <div className="selling-before">내가 등록한 상품 <span>({16})</span></div>
+            <div className="selling-before">내가 등록한 상품 <span>({props.sellingLength})</span></div>
             <div className="wrap-selling-item">
             {
                 props.sellingData.map((product, i) => {
@@ -116,7 +128,7 @@ const PickedProductInfo = (props) => {
 
     return(
         <div className="pick-wrap">
-            <div className="pick-before">내가 찜한 상품 <span>({16})</span></div>
+            <div className="pick-before">내가 찜한 상품 <span>({props.pickLength})</span></div>
             <div className="wrap-pick-item">
             {
                 props.pickData.map((product, i) => {

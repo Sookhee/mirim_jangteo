@@ -173,7 +173,7 @@
             return(
                 <div className="wrap-info">
                     <div className="wrap-item-out">
-                        <div className="item-profile" style={{backgroundImage: `url(${"https://images.unsplash.com/photo-1559251606-c623743a6d76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"})`}}></div>
+                        <div className="item-profile" style={{backgroundImage: `url(${"https://images.unsplash.com/photo-1559251606-c623743a6d76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"})`}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                         <div className="seller-info">
                             <div className="wrap-item">
                                 <div className="item-title-seller">판매자</div>

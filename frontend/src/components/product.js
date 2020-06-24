@@ -15,6 +15,7 @@ const ProductList = ({match}) => {
             setKeyword(' ')
         }
         else{
+            setKeyword(' ')
             setKeyword(match.params.keyword)
         }
 
@@ -25,7 +26,7 @@ const ProductList = ({match}) => {
     const getProductList = () => {
         fetch(`http://localhost:5000/store/search/${keyword}/0/0`)
         .then(response => response.json())
-        .then(response => setProductData(response.data))
+        .then(response => setProductData( response.data))
         .catch(err => console.log(err))
     }
 

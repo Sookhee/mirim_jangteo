@@ -1,35 +1,76 @@
-.footer{
-    clear: both;
-    width: 100%;
-    padding: 20px 0 60px;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
-    
-    .wrap-footer{
-        width: 1300px;
-        text-align: center;
-        display: flex;
-        margin: 0 auto;
+@import "/_mixin.scss";
 
-        .footer-item-wrap{
-            &:last-child{margin-left: 40px;}
-            .footer-item{
-                display: flex;
-                .footer-logo{
-                    width: 120px;
-                    height: 50px;
-                    background-color: #ffffff;
-                    background-image: url(../img/logo.png);
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
+@include desktop {
+    .footer{
+        clear: both;
+        width: 100%;
+        padding: 20px 0 60px;
+        box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+        
+        .wrap-footer{
+            width: 1300px;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
 
-                div{
-                    margin-right: 20px;
-                    padding-bottom: 3px;
-                    font-size: 0.76em;
-                    color: #6c738a;
+            .footer-item-wrap{
+                &:last-child{margin-left: 40px;}
+                .footer-item{
+                    display: flex;
+                    .footer-logo{
+                        width: 120px;
+                        height: 50px;
+                        background-color: #ffffff;
+                        background-image: url(../img/logo.png);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+
+                    div{
+                        margin-right: 20px;
+                        padding-bottom: 3px;
+                        font-size: 0.76em;
+                        color: #6c738a;
+                    }
                 }
-            }
-        }       
+            }       
+        }
+    }
+}
+
+@include mobile{
+    .footer{
+        clear: both;
+        width: 100%;
+        height: 80px;
+        padding: 20px 0 60px;
+        box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+        
+        .wrap-footer{
+
+            .footer-item-wrap{
+                &:last-child{margin-left: 20px;}
+                .footer-item{
+                    display: flex;
+                    .footer-logo{
+                        width: 80px;
+                        height: 40px;
+                        margin-left: 10px;
+                        margin-bottom: 10px;
+                        background-color: #ffffff;
+                        background-image: url(../img/logo.png);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+
+                    div{
+                        margin-right: 12px;
+                        padding-bottom: 3px;
+                        font-size: 0.76em;
+                        color: #6c738a;
+                    }
+                }
+            }       
+        }
     }
 }

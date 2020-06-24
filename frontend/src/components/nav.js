@@ -29,7 +29,7 @@ class Nav extends Component {
                             <NavLink to={"/mypage/" + this.context.userId + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
                         </div>
                         <div className="nav-item">
-                            <NavLink to={"/notice"} className="in-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>게시판</NavLink>
+                            <NavLink to={"/notice"} className="in-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>공지사항</NavLink>
                             <NavLink to={"/sign-in"} className="in-item">로그아웃</NavLink>
                         </div>
                     </div>

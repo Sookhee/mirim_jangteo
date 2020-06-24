@@ -1,19 +1,50 @@
-.home{
-    width: 1300px;
-    margin: 0 auto;
-    .cont-sub-title{
-        font-size: 0.9em;
-        font-weight: 500;
-        color: #0b53bd;
-    }
-    .cont-title{
-        font-size: 1.3em;
-        font-weight: 500;
-    }
+@import "/_mixin.scss";
 
-    .home-br{
-        clear: both;
+@include desktop {
+    .home{
+        width: 1300px;
+        margin: 0 auto;
+        .cont-sub-title{
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #0b53bd;
+        }
+        .cont-title{
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .home-br{
+            clear: both;
+            width: 100%;
+            height: 100px;
+        }
+    }
+}
+
+@include mobile{
+    .home{
         width: 100%;
-        height: 100px;
+        margin: 0 auto;
+
+        .cont-sub-title{
+            width: 360px;
+            margin: 0 auto;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #0b53bd;
+        }
+        .cont-title{
+            width: 360px;
+            margin: 0 auto;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .home-br{
+            clear: both;
+            width: 100%;
+            height: 100px;
+        }
     }
 }

@@ -12,7 +12,7 @@ import cateBanner7 from "../img/cate-banner7.png";
 class PopularList extends Component {
     state = {
         productData: [],
-        cateData: '1',
+        cateData: '0',
         isChecked: [true, false, false, false, false, false, false],
     }
 
@@ -52,6 +52,8 @@ class PopularList extends Component {
             <div className="popular">
                 <div className="category">
                     <div className="category-wrap">
+                        <div className="category-blank"></div>
+
                         <input type='radio' value='1' name='category' id='cate1' checked={this.state.isChecked[0]}/>
                         <label htmlFor='cate1'><div className="wrap-label" onClick={this.setCategory0}>전체 </div></label>
                         <div className="category-blank"></div>
