@@ -12,20 +12,29 @@ const connection = mysql_odbc.init();
 // var {Like} = require('../models');
 // var {Banner} = require('../models');
 
-// 카테고리별 인기있는 상품 8개 (끝)
-router.get('/popular/:category', (req, res) => {
-    const category = req.params.category;
-    const query = 'SELECT * FROM products WHERE product_deal_status = 0 AND category = ? ORDER BY product_count DESC LIMIT 10';
-
+// 카테고리별 인기있는 상품 10개 (끝)
+router.get('/popular', (req, res) => {
     const productList = [];
-    connection.query(query, [category], (err, result) => {
+    let productLists = {
+        '0': [],
+        '1': [],
+        '2': [],
+        '3': [],
+        '4': [],
+        '5': [],
+        '6': [],
+        '7': [],
+    };
+    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 10';
+    connection.query(query, (err, result) => {
         if (err) {
             return res.send(err);
         } else {
-            for(let i = 0; i < result.length; i++){
-                productList[i] = result[i];
+            for (let i = 0; i < result.length; i++) {
+                productLists[0].push(result[i]);
+                productLists[result[i].category + 1].push(result[i]);
             }
-            res.send(JSON.stringify(productList))
+            res.send(JSON.stringify(productLists));
         }
     });
 });
@@ -119,6 +128,8 @@ router.get('/post', function(req, res, next) {
 
 // 상품 자세히 보기 (끝)
 router.get('/detail/:id', function (req, res, next) {
+    // let member_id 세션에서 받아오기
+    let member_id = "s2018w01";
     let id = req.params.id;
     id *= 1;
 
@@ -131,7 +142,7 @@ router.get('/detail/:id', function (req, res, next) {
         } else {
             let like = 0;
             query = "SELECT id FROM like_lists WHERE member_id = ? AND product_id = ?";
-            connection.query(query, [result[0].member_id, result[0].id], (err, result2) => {
+            connection.query(query, [member_id, result[0].id], (err, result2) => {
                 if (err) {
                     console.error(err);
                 } else {
@@ -163,7 +174,7 @@ router.get('/detail/:id', function (req, res, next) {
     });
 });
 
-// 찜 추가하기
+// 찜 추가, 취소하기
 router.get('/click_like/:id', function(req, res, next) {
     // TODO: member_id 세션에서 가져오기
     const member_id = 's2018w01';
@@ -175,14 +186,19 @@ router.get('/click_like/:id', function(req, res, next) {
         if (err) {
             return res.send(err);
         } else {
-            if (result) {
+            if (result.length > 0) {
                 // 이미 존재할 때
                 query = 'DELETE FROM like_lists WHERE id = ?';
-                connection.query(query, [result], (err, result2) => {
+                connection.query(query, [result[0].id], (err, result2) => {
                     if (err) {
                         console.error(err);
+                        return res.send(err);
                     } else {
-                        console.log('찜 취소');
+                        res.send({
+                            success: 1,
+                            delete: 1,
+                            insert: 0
+                        });
                     }
                 });
             } else {
@@ -191,9 +207,13 @@ router.get('/click_like/:id', function(req, res, next) {
                 connection.query(query, [member_id, id], (err, result3) => {
                    if (err) {
                        console.error(err);
+                       return res.send(err);
                    } else {
-                       console.log(result3);
-                       console.log('찜 완료');
+                       res.send({
+                           success: 1,
+                           delete: 0,
+                           insert: 1
+                       });
                    }
                 });
             }
