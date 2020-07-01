@@ -31,7 +31,7 @@ const Post = () => {
             </div>
             <div className="before-form container">
                 <div className="wrap-before">
-                    <NavLink to=""><div className="goback">목록으로</div></NavLink>
+                    <NavLink to=""><div className="goback">메인으로</div></NavLink>
                     <div className="post-root"><NavLink to="">전체 상품</NavLink> &nbsp;&nbsp;>&nbsp;&nbsp;<span className="post-hl">새 상품 등록</span></div>
                 </div>
                 <details className="tip">
