@@ -23,24 +23,25 @@ class Nav extends Component {
     render() {
         return (
             <div className="nav">
-                <div className="wrap-nav top">
-                    <div className="navbar">
-                        <div className="nav-item">
-                            <NavLink to={"/mypage/" + this.context.userId + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
-                        </div>
-                        <div className="nav-item">
-                            <NavLink to={"/notice"} className="in-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>공지사항</NavLink>
-                            <NavLink to={"/sign-in"} className="in-item">로그아웃</NavLink>
+                <div className="nav-top">
+                    <div className="container">
+                        <div className="nav-flex-wrap">
+                            <div className="nav-flex-item">
+                                <NavLink to={"/mypage/" + this.context.userId + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
+                            </div>
+                            <div className="nav-flex-item">
+                                <NavLink to={"/notice"} className="nav-link-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>공지사항</NavLink>
+                                <NavLink to={"/sign-in"} className="nav-link-item">로그아웃</NavLink>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="wrap-nav bottom">
-                    <div className="navbar">
-                        <div className="nav-item-wrap">
-                            <NavLink
-                            to={"/"}
-                            exact={true}>
-                                <div className="main"></div>
+                <div className="nav-bottom">
+                    <div className="container">
+                        <div className="nav-flex-wrap">
+                            <div className="nav-flex-item">
+                            <NavLink to={"/"} exact={true}>
+                                    <div className="main"></div>
                             </NavLink>
                             <form>
                                 <input type="text"
@@ -54,15 +55,17 @@ class Nav extends Component {
                                     <button type="submit"></button>
                                 </NavLink>
                             </form>
-                        </div>
-                        <div className="nav-item-wrap wrap-menu">
-                            <NavLink to={"/post"} className="in-nav-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
-                            <NavLink to={"/mypage/" + this.context.userId} className="in-nav-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
-                            <NavLink to={"/mirim-talk"} className="in-nav-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
+                            </div>
+                            <div className="nav-flex-item">
+                            <NavLink to={"/post"} className="nav-in-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
+                            <NavLink to={"/mypage/" + this.context.userId} className="nav-in-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
+                            <NavLink to={"/mirim-talk"} className="nav-in-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
         );
     }
 }
