@@ -8,14 +8,17 @@
         text-align: center;
         line-height: 300px;
         border-radius: 10px;
-        background: #ddd;
+        background-image: url('../img/banner1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
 }
 
 @include mobile{
     .banner{
         .wrap-banner{
-            height: 180px;
+            height: 110px;
             line-height: 180px;
         }
     }

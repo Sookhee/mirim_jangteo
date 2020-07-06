@@ -8,7 +8,6 @@ class Banner extends Component {
             <div className="banner">
                 <div className="container">
                     <div className="wrap-banner">
-                        미림 장터 배너입니다.
                     </div>
                 </div>
             </div>

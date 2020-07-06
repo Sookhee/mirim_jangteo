@@ -11,7 +11,7 @@ const Home = () => {
             <Banner/>
             <div className="container">
                 <div className="cont-sub-title">오늘의 인기 상품은?</div>
-                <div className="cont-title">미림장터 카테고리별 인기 상품 TOP 10</div>
+                <div className="cont-title">미림장터 카테고리별 인기 상품 TOP 8</div>
             </div>
             <PopularList/>
             <div className="home-clear"></div>

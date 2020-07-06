@@ -9,6 +9,10 @@ class Nav extends Component {
     state = {
         search: ''
     }
+
+    onClickLogout = () => {
+        alert("원활한 전시를 위해 로그아웃을 일시적으로 막아뒀습니다.\n양해 부탁드립니다 :D");
+    }
     
     handleChange = (e) => {
         this.setState({
@@ -30,8 +34,8 @@ class Nav extends Component {
                                 <NavLink to={"/mypage/" + this.context.userId + "/pick"} activeStyle={{color: '#ffffff', background: '#609ae9'}}>찜한 상품</NavLink>
                             </div>
                             <div className="nav-flex-item">
-                                <NavLink to={"/notice"} className="nav-link-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>공지사항</NavLink>
-                                <NavLink to={"/sign-in"} className="nav-link-item">로그아웃</NavLink>
+                                {/* <NavLink to={"/notice"} className="nav-link-item" activeStyle={{color: '#ffffff', background: '#609ae9'}}>공지사항</NavLink> */}
+                                <div onClick={this.onClickLogout} className="nav-link-item">로그아웃</div>
                             </div>
                         </div>
                     </div>
@@ -58,8 +62,8 @@ class Nav extends Component {
                             </div>
                             <div className="nav-flex-item">
                             <NavLink to={"/post"} className="nav-in-item" activeStyle={{color: '#609ae9'}}>판매하기</NavLink>
+                            <NavLink to={"/notice"} className="nav-in-item" activeStyle={{color: '#609ae9'}}>공지사항</NavLink>
                             <NavLink to={"/mypage/" + this.context.userId} className="nav-in-item" activeStyle={{color: '#609ae9'}}>마이페이지</NavLink>
-                            <NavLink to={"/mirim-talk"} className="nav-in-item" activeStyle={{color: '#609ae9'}}>미림톡</NavLink>
                             </div>
                         </div>
                     </div>

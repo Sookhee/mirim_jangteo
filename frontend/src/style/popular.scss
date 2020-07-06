@@ -1,120 +1,79 @@
 @import "/_mixin.scss";
 
-@include desktop {
-    .popular{
-        width: 100%;
-        .category{
-            width: 100%;
-            margin: 20px 0;
-            font-size: 1em;
-            font-weight: 400;
-            margin-bottom: 20px;
+.popular{
+    width: 100%;
+    .category{
+        margin: 20px 0;
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 2%;
 
-            .category-wrap{
-                display: flex;
-                position: relative;
-                .wrap-label{
-                }
+        .category-wrap{
+            display: flex;
+            position: relative;
+            .wrap-label{
+                text-align: center;
+            }
 
-                .category-blank{
-                    width: 25px;
-                }
-        
-                input[type="radio"]{ width: 0px; visibility:hidden; margin: 10px 0; }
-                input:checked + label{
-                    color: #609ae9;
-                    border-bottom: 2px solid #609ae9;
-                }
+            .category-blank{
+                width: 25px;
+            }
+    
+            input[type="radio"]{ width: 0px; visibility:hidden; margin: 10px 0;}
+            input + label{
+                width: 5%;
+                height: 30px;
+            }
+            input:checked + label{
+                // width: 50px;
+                color: #609ae9;
+                border-bottom: 2px solid #609ae9;
+            }
 
-                .category-hr{
-                    width: 100%;
-                    height: 2px;
-                    position: absolute;
-                    bottom: 0px;
-                    background: #eee;
-                    z-index: -2;
-                }
+            .category-hr{
+                width: 100%;
+                height: 2px;
+                position: absolute;
+                bottom: 5px;
+                background: #eee;
+                z-index: -2;
             }
         }
-
-        .wrap-product{
-            margin: 0 auto;
-
-            .category-intro{
-                width: 420px;
-                height: 256px;
-                margin: 0 0 20px 0;
-                float: left;
-                box-shadow: 0.5px 0.5px 3px 0 rgba(0,0,0,0.2);
-
-                .cate-intro-img{
-                    width: 420px;
-                    height: 256px;
-                    border-radius: 4px;
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
-            }
-        }
-
     }
-}
 
+    .wrap-product{
+        margin: 0 auto;
+
+        .category-intro{
+            width: 38%;
+            height: 240px;
+            margin-right: 2%;
+            float: left;
+            box-shadow: 0.5px 0.5px 3px 0 rgba(0,0,0,0.2);
+
+            .cate-intro-img{
+                width: 100%;
+                height: 100%;
+                border-radius: 4px;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+}
 
 @include mobile{
     .popular{
-        width: 100%;
         .category{
-            width: 100%;
-            margin: 20px 0;
-            font-size: 0.8em;
-            font-weight: 400;
-
             .category-wrap{
-                display: flex;
-                position: relative;
-                .wrap-label{
+                input + label{
+                    width: 20%;
                 }
-
                 .category-blank{
-                    width: 12px;
-                }
-        
-                input[type="radio"]{ width: 0px; visibility:hidden; margin: 10px 0; }
-                input:checked + label{
-                    color: #609ae9;
-                    border-bottom: 2px solid #609ae9;
-                }
-
-                .category-hr{
-                    width: 100%;
-                    height: 2px;
-                    position: absolute;
-                    bottom: 0px;
-                    background: #eee;
-                    z-index: -2;
+                    width: 8px;
                 }
             }
         }
-
-        .wrap-product{
-            margin: 0 auto;
-
-            .category-intro{
-                width: 100%;
-                height: 232px;
-                margin: 0 0 20px 0;
-                float: left;
-                box-shadow: 0.5px 0.5px 3px 0 rgba(0,0,0,0.2);
-
-                .cate-intro-img{
-                    width: 376x;
-                    height: 240px;
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
-            }
-        }
-
     }
 }

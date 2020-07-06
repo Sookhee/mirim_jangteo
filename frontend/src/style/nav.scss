@@ -144,3 +144,10 @@
         }
     }
 }
+
+
+.nav-link-item{
+    &:hover{
+        cursor: pointer;
+    }
+}
