@@ -86,7 +86,7 @@ router.get('/mypage/:id', function(req, res, next) {
 // 내 판매 상품
 router.get('/myproduct/:member_id', function(req, res, next) {
     // TODO: member_id 세션에서 가져오기
-    var member_id = 's2018w18';
+    var member_id = 's2018s38';
 
     const productList = [];
     let productLists = [];

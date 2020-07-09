@@ -24,14 +24,14 @@ const ProductList = ({match}) => {
     });
 
     const getProductList = () => {
-        fetch(`http://localhost:5000/store/search/${keyword}/0/0`)
+        fetch(`http://localhost:5000/store/search/${keyword}/1/0`)
         .then(response => response.json())
         .then(response => setProductData( response.data))
         .catch(err => console.log(err))
     }
 
     const getProductLength = () => {
-        fetch(`http://localhost:5000/store/search/${keyword}/0/0`)
+        fetch(`http://localhost:5000/store/search/${keyword}/1/0`)
         .then(response => response.json())
         .then(response => setProductLength(response.length))
         .catch(err => console.log(err))

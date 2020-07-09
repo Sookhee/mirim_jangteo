@@ -10,6 +10,7 @@ import Product from "./components/product";
 import Post from "./components/post";
 import Mypage from "./components/mypage";
 import Notice from "./components/notice";
+import NoticeDetail from "./components/notice-detail";
 import Detail from './components/detail';
 import Footer from "./components/footer";
 import FalseFooter from "./components/falseFooter";
@@ -60,6 +61,7 @@ class App extends Component {
                 <Route path="/post" component={Post}/>
                 <Route path="/mypage/:user_id" component={Mypage}/>
                 <Route path="/notice" component={Notice}/>
+                <Route path="/noticeDetail/:notice_id" component={NoticeDetail}/>
                 <Route path="/product/:prod_id" component={Detail}/>
               </div>
               <Footer/>

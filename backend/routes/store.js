@@ -25,7 +25,7 @@ router.get('/popular', (req, res) => {
         '6': [],
         '7': [],
     };
-    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 10';
+    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 8';
     connection.query(query, (err, result) => {
         if (err) {
             return res.send(err);
@@ -97,7 +97,7 @@ router.get('/post', function(req, res, next) {
     let member_name = '';
 
     const{ title, category, price, content, status, place, swap } = req.query
-    const image = 'https://pds.joins.com/news/component/htmlphoto_mmdata/201502/04/htm_20150204185442c010c011.jpg';
+    const image = 'https://firebasestorage.googleapis.com/v0/b/maha-16b41.appspot.com/o/placeholder.png?alt=media&token=ab56864a-d69e-4c33-8e96-727edf5ddd11';
 
     let query = 'SELECT name FROM members WHERE member_id = ?';
 
