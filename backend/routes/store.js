@@ -25,7 +25,7 @@ router.get('/popular', (req, res) => {
         '6': [],
         '7': [],
     };
-    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 10';
+    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 8';
     connection.query(query, (err, result) => {
         if (err) {
             return res.send(err);
