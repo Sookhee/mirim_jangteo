@@ -25,13 +25,15 @@ router.get('/popular', (req, res) => {
         '6': [],
         '7': [],
     };
-    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 8';
+    let query = 'SELECT * FROM products WHERE product_deal_status = 0 ORDER BY product_count DESC LIMIT 48';
     connection.query(query, (err, result) => {
         if (err) {
             return res.send(err);
         } else {
             for (let i = 0; i < result.length; i++) {
-                productLists[0].push(result[i]);
+                if(productLists[0].length < 8){
+                    productLists[0].push(result[i]);
+                }
                 productLists[result[i].category + 1].push(result[i]);
             }
             res.send(JSON.stringify(productLists));
