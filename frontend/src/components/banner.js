@@ -6,8 +6,9 @@ class Banner extends Component {
     render() {
         return (
             <div className="banner">
-                <div className="wrap-banner">
-                    미림 장터 배너입니다.
+                <div className="container">
+                    <div className="wrap-banner">
+                    </div>
                 </div>
             </div>
         );

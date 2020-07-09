@@ -5,7 +5,7 @@ export default class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <div className="wrap-footer">
+                <div className="wrap-footer container">
                     <div className="footer-item-wrap">
                         <div className="footer-item">
                             <div className="footer-logo"></div>

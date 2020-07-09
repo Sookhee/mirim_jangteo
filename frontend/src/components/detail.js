@@ -64,7 +64,7 @@
                             <div className="wrap-left">
                                 <div className="pro-img" style={{backgroundImage: `url(${this.state.prod.product_img})`}}></div>
                                 <div className="wrap-btn">
-                                    <NavLink to="/mirim-talk"><div className="pro-talk"></div></NavLink>
+                                    {/* <NavLink to="/mirim-talk"><div className="pro-talk"></div></NavLink> */}
                                     <img src={this.state.heart} className="pro-pick" onClick={this.onClickHeart}/>                      
                                 </div>
                             </div>
